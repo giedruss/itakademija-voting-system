@@ -1,5 +1,22 @@
 var ConstituencyListContainer = React.createClass({
 
+    getInitialState: function() {
+        return {
+            constituencies: [] 
+        };
+    },
+    
+    componentWillMount: function() {
+        var self = this;
+        axios.get('/api/constituency')
+        .then(function (response) {
+            self.setState({ 
+                constituencies: response.data 
+            });
+        });
+
+    },
+    
     handleAdministerDistricts: function() {
         this.context.router.push('/dis');
     },
@@ -8,7 +25,7 @@ var ConstituencyListContainer = React.createClass({
     render: function() {
         return (
                 <div>
-                <ConstituencyListComponent onAdministerDistricts={this.handleAdministerDistricts}/>
+                <ConstituencyListComponent constituencies={this.state.constituencies} onAdministerDistricts={this.handleAdministerDistricts}/>
                 <AddNewContainer redirectTo={'/add-con'}/>
                 </div>
                 )

@@ -1,6 +1,6 @@
 #FileLock
-#Mon Jan 16 14:37:34 EET 2017
-hostName=PC
-id=159a7485c0d2dd96e1276ef29c10324b0feba9f72af
+#Mon Jan 16 14:48:09 EET 2017
+hostName=mindaugasd-VirtualBox
+id=159a752049704606b9fd52ddb455d9f90aede4d8b47
 method=file
-server=192.168.1.101\:61897
+server=127.0.1.1\:38897
