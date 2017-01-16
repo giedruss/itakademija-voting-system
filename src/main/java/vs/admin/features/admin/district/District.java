@@ -1,4 +1,4 @@
-package vs.admin.features.district.model;
+package vs.admin.features.admin.district;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,13 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity(name = "district")
+import vs.admin.features.admin.constituency.Constituency;
+
+@Entity
 @Table(name = "districts")
 public class District {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "constituency_id")
+	@Column(name = "district_id")
 	private Integer id;
 
 	@Column(name = "district_title")
@@ -24,17 +26,17 @@ public class District {
 	private Long voters;
 
 	@ManyToOne
-	private District district;
+	private Constituency constituency;
 
 	public District() {
 
 	}
 
-	public District(Integer id, String title, Long voters, District district) {
+	public District(Integer id, String title, Long voters, Constituency constituency) {
 		this.id = id;
 		this.title = title;
 		this.voters = voters;
-		this.district = district;
+		this.constituency = constituency;
 	}
 
 	public Integer getId() {
@@ -61,11 +63,12 @@ public class District {
 		this.voters = voters;
 	}
 
-	public District getDistrict() {
-		return district;
+	public Constituency getConstituency() {
+		return constituency;
 	}
 
-	public void setDistrict(District district) {
-		this.district = district;
+	public void setConstituency(Constituency constituency) {
+		this.constituency = constituency;
 	}
+
 }

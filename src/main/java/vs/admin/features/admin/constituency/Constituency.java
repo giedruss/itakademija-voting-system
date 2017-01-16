@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import vs.admin.features.district.model.District;
+import vs.admin.features.admin.district.District;
 
 @Entity
 @Table(name = "constituency")

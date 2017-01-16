@@ -1,6 +1,6 @@
 #FileLock
-#Mon Jan 16 14:01:32 EET 2017
+#Mon Jan 16 14:37:34 EET 2017
 hostName=PC
-id=159a7275437cd3a46fc54bd65c856848eaee3464ea6
+id=159a7485c0d2dd96e1276ef29c10324b0feba9f72af
 method=file
-server=192.168.1.101\:61289
+server=192.168.1.101\:61897

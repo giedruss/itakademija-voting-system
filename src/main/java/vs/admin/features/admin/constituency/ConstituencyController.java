@@ -15,7 +15,7 @@ public class ConstituencyController {
 	private ConstituencyRepository constituencyRepository;
 
 	@RequestMapping(value = "/api/constituency", method = RequestMethod.GET)
-	public List<Constituency> findRoles() {
+	public List<Constituency> findAllConstituencies() {
 		return constituencyRepository.findAllConstituencies();
 	}
 
