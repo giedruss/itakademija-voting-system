@@ -1,6 +1,6 @@
 #FileLock
-#Mon Jan 16 11:32:36 EET 2017
-hostName=arnoldasurbelis-VirtualBox
-id=159a69f040975c7e14df3e9a9c54ae3f1e9e1dadd06
+#Mon Jan 16 14:01:32 EET 2017
+hostName=PC
+id=159a7275437cd3a46fc54bd65c856848eaee3464ea6
 method=file
-server=127.0.1.1\:45552
+server=192.168.1.101\:61289

@@ -1,4 +1,4 @@
-package vs.admin.features.constitutency.model;
+package vs.admin.features.admin.constituency;
 
 import java.util.List;
 
