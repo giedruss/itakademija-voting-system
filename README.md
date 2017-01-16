@@ -1,6 +1,6 @@
 # itakademija-voting-system
 
-h2 connection console
+***h2 connection console
 
 Prisijungiama kai programa paleista
 
