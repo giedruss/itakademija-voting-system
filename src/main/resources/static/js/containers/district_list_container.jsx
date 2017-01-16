@@ -1,5 +1,22 @@
 var DistrictListContainer = React.createClass({
 
+    getInitialState: function() {
+        return {
+            districts: [] 
+        };
+    },
+    
+    componentWillMount: function() {
+        var self = this;
+        axios.get('/api/district')
+        .then(function (response) {
+            self.setState({ 
+                districts: response.data 
+            });
+        });
+
+    },
+    
     handleAdministerRepresentative: function() {
         this.context.router.push('/repres');
     },
@@ -12,7 +29,10 @@ var DistrictListContainer = React.createClass({
         return (
         <div>
         <h3>Naujamiesčio apygarda</h3>
-        <DistrictListComponent onAdministerRepresentative={this.handleAdministerRepresentative} onAddRepresentative={this.handleAddRepresentative}/>
+        <DistrictListComponent 
+            districts={this.state.districts} 
+            onAdministerRepresentative={this.handleAdministerRepresentative} 
+            onAddRepresentative={this.handleAddRepresentative}/>
         <AddNewContainer redirectTo={'/add-dis'}/>
         </div>
         )
