@@ -8,7 +8,8 @@ var DistrictListContainer = React.createClass({
     
     componentWillMount: function() {
         var self = this;
-        axios.get('/api/district')
+        var conId = this.props.params.conId;
+        axios.get('/api/constituency/' + conId)
         .then(function (response) {
             self.setState({ 
                 districts: response.data 
@@ -28,7 +29,7 @@ var DistrictListContainer = React.createClass({
     render: function() {
         return (
         <div>
-        <h3>Naujamiesčio apygarda</h3>
+        
         <DistrictListComponent 
             districts={this.state.districts} 
             onAdministerRepresentative={this.handleAdministerRepresentative} 

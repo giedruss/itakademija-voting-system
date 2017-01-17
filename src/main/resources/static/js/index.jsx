@@ -25,7 +25,7 @@ ReactDOM.render((
     <Route path="/" component={App}>
       <IndexRoute component={NoMatch} />
         <Route path="/con" component={ConstituencyListContainer} />
-        <Route path="/dis" component={DistrictListContainer} />
+        <Route path="/dis/:conId" component={DistrictListContainer} />
         <Route path="/add-con" component={AddConstituencyContainer} />
         <Route path="/add-dis" component={AddDistrictContainer} />
         <Route path="/add-rep" component={AdministrateRepresentativeContainer} />

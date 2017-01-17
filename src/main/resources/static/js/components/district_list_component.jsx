@@ -19,7 +19,7 @@ var DistrictListComponent = React.createClass({
         
       return (
               <div className="panel panel-default">
-
+              <h3>Naujamiesčio apygarda</h3>
               <table className="table">     
               <thead>  
               <tr>
