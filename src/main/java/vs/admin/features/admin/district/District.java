@@ -5,10 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import vs.admin.features.admin.constituency.Constituency;
 
 @Entity
 @Table(name = "districts")
@@ -25,18 +22,26 @@ public class District {
 	@Column(name = "number_of_voters")
 	private Long voters;
 
-	@ManyToOne
-	private Constituency constituency;
+	@Column(name = "district_address")
+	private String address;
 
 	public District() {
 
 	}
 
-	public District(Integer id, String title, Long voters, Constituency constituency) {
+	public District(Integer id, String title, Long voters, String address) {
 		this.id = id;
 		this.title = title;
 		this.voters = voters;
-		this.constituency = constituency;
+		this.address = address;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public Integer getId() {
@@ -61,14 +66,6 @@ public class District {
 
 	public void setVoters(Long voters) {
 		this.voters = voters;
-	}
-
-	public Constituency getConstituency() {
-		return constituency;
-	}
-
-	public void setConstituency(Constituency constituency) {
-		this.constituency = constituency;
 	}
 
 }

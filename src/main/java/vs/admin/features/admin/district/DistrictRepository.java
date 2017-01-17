@@ -12,15 +12,18 @@ import org.springframework.stereotype.Repository;
 public class DistrictRepository {
 
 	private static final String FIND_ALL = "SELECT d from District d";
-
+	
 	@Autowired
 	private EntityManager entityManager;
 
+	
+	
+	
 	@SuppressWarnings("unchecked")
 	public List<District> findAllDistricts() {
 		return entityManager.createQuery(FIND_ALL).getResultList();
-
 	}
+
 
 	@Transactional
 	public District saveOrUpdate(District district) {
@@ -33,5 +36,6 @@ public class DistrictRepository {
 			return merged;
 		}
 	}
+	
 
 }

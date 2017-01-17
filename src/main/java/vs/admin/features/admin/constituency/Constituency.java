@@ -27,7 +27,7 @@ public class Constituency {
 	private String title;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "district_id")
+	@JoinColumn(name = "CONSTITUENCY_CONSTITUENCY_ID")
 	private List<District> districts;
 
 	public Constituency(Integer id, String title) {
