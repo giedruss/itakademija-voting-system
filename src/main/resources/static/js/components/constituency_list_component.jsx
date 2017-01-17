@@ -4,7 +4,7 @@ var ConstituencyListComponent = React.createClass({
         var constituencyList = this.props.constituencies.map( function( constituency, index ) {
           return (
               <tr key={index}>
-              <td>{constituency.name}</td>
+              <td>{constituency.title}</td>
               <td>0</td>
               <td><button type="button" className="btn btn-info" onClick={self.props.onAdministerDistricts}>Administruoti apylinkes</button></td>
               <td>
