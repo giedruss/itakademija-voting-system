@@ -20,7 +20,6 @@ public class ConstituencyRepository {
 	@SuppressWarnings("unchecked")
 	public List<Constituency> findAllConstituencies() {
 		return entityManager.createQuery(FIND_ALL).getResultList();
-		
 
 	}
 
@@ -37,9 +36,14 @@ public class ConstituencyRepository {
 	}
 
 	public Constituency findConstituencyById(Integer id) {
-		return entityManager.find(Constituency.class, id);
+		Constituency constituency = entityManager.find(Constituency.class, id);
+		if (constituency.getDeletedTime() == null) {
+			return constituency;
+		}
+		return null;
 	}
 
+	@Transactional
 	public void deleteConstituency(Integer id) {
 		Constituency constituency = entityManager.find(Constituency.class, id);
 		Date date = new Date();
