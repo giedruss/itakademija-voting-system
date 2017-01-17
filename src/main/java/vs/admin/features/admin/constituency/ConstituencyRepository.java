@@ -38,4 +38,10 @@ public class ConstituencyRepository {
 		return entityManager.find(Constituency.class, id);
 	}
 
+	public void deleteConstituency(Constituency constituency){
+		
+		Constituency merged = entityManager.merge(constituency);
+		
+		entityManager.persist(merged);
+	}
 }

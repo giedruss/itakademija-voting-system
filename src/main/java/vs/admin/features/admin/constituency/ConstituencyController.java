@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import vs.admin.features.admin.district.District;
 
 @RestController
 public class ConstituencyController {
@@ -17,8 +16,6 @@ public class ConstituencyController {
 	@Autowired
 	private ConstituencyRepository constituencyRepository;
 
-	@Autowired
-	private ConstituencyService constituencyService;
 
 	@RequestMapping(value = "/api/constituency", method = RequestMethod.GET)
 	public List<Constituency> findAllConstituencies() {
@@ -31,8 +28,8 @@ public class ConstituencyController {
 	}
 
 	@RequestMapping(value = "/api/constituency/{id}", method = RequestMethod.GET)
-	public List<District> getRole(@PathVariable("id") Integer id) {
-		return constituencyService.getDistrictListByConstituency(id);
+	public Constituency getRole(@PathVariable("id") Integer id) {
+		return constituencyRepository.findConstituencyById(id);
 
 	}
 }
