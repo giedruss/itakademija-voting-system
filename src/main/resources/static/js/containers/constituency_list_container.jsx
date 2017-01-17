@@ -17,8 +17,11 @@ var ConstituencyListContainer = React.createClass({
 
     },
     
-    handleAdministerDistricts: function() {
-        this.context.router.push('/dis');
+    handleAdministerDistricts: function(constituency) {
+        var self = this;
+        return function() {
+                self.context.router.push('/dis/' + constituency.id);
+        }
     },
     
     render: function() {

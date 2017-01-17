@@ -6,7 +6,7 @@ var ConstituencyListComponent = React.createClass({
               <tr key={index}>
               <td>{constituency.title}</td>
               <td>{constituency.districts.length}</td>
-              <td><button type="button" className="btn btn-info" onClick={self.props.onAdministerDistricts}>Administruoti apylinkes</button></td>
+              <td><button type="button" className="btn btn-info" onClick={self.props.onAdministerDistricts(constituency)}>Administruoti apylinkes</button></td>
               <td>
               <button type="button" className="btn btn-default">
               <span className="glyphicon glyphicon-remove"></span>
