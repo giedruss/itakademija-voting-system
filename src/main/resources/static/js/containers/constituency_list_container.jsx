@@ -24,10 +24,28 @@ var ConstituencyListContainer = React.createClass({
         }
     },
     
+    handleRemoveItem: function(constituency) { 
+        var self = this; 
+        return function() { 
+          axios.put('/api/constituency/'+ constituency.id).then(function(response) { 
+              console.log('item deleted'); 
+              axios.get('/api/constituency') 
+              .then(function (response) { 
+                  self.setState({  
+                      constituencies: response.data  
+                  }); 
+              }); 
+          }); 
+        }; 
+      },
+    
     render: function() {
         return (
                 <div>
-                <ConstituencyListComponent constituencies={this.state.constituencies} onAdministerDistricts={this.handleAdministerDistricts}/>
+                <ConstituencyListComponent  
+                constituencies={this.state.constituencies}  
+                onAdministerDistricts={this.handleAdministerDistricts} 
+                onRemoveItem={this.handleRemoveItem} />
                 <AddNewContainer redirectTo={'/add-con'}/>
                 </div>
                 )

@@ -9,7 +9,7 @@ var ConstituencyListComponent = React.createClass({
               <td><button type="button" className="btn btn-info" onClick={self.props.onAdministerDistricts(constituency)}>Administruoti apylinkes</button></td>
               <td>
               <button type="button" className="btn btn-default">
-              <span className="glyphicon glyphicon-remove"></span>
+              <span className="glyphicon glyphicon-remove" onClick={self.props.onRemoveItem(constituency)}></span>
               </button></td></tr>
           );
         });
