@@ -12,10 +12,9 @@ public class ConstituencyService {
 
 	@Autowired
 	ConstituencyRepository constituencyRepository;
-	
-	protected List<District> getDistrictListByConstituency(Integer id){
+
+	protected List<District> getDistrictListByConstituency(Integer id) {
 		Constituency constituency = constituencyRepository.findConstituencyById(id);
 		return constituency.getDistricts();
 	}
 }
-
