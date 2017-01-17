@@ -3,7 +3,7 @@ var AddConstituencyContainer = React.createClass({
     getInitialState: function() {
         return {
             constituency: {
-                name: ''
+                title: ''
             }
         }
     },

@@ -1,6 +1,14 @@
 #FileLock
+<<<<<<< HEAD
 #Tue Jan 17 10:29:53 EET 2017
 hostName=192.168.30.136
 id=159ab8bf687921bdf1aba1535d7bd233e3462215285
 method=file
 server=192.168.30.136\:58688
+=======
+#Tue Jan 17 09:36:47 EET 2017
+hostName=mindaugasd-VirtualBox
+id=159ab5b4f83aa702f64feb2072953bdfd9133d29cfd
+method=file
+server=127.0.1.1\:39784
+>>>>>>> 7e90a5b3d28ee304b0c6172423b1a6d1325bba6b

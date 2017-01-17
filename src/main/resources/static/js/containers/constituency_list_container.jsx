@@ -21,7 +21,6 @@ var ConstituencyListContainer = React.createClass({
         this.context.router.push('/dis');
     },
     
-    
     render: function() {
         return (
                 <div>
