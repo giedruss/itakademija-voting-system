@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 public class ConstituencyController {
 
 	@Autowired
 	private ConstituencyRepository constituencyRepository;
-
 
 	@RequestMapping(value = "/api/constituency", method = RequestMethod.GET)
 	public List<Constituency> findAllConstituencies() {
@@ -28,8 +26,13 @@ public class ConstituencyController {
 	}
 
 	@RequestMapping(value = "/api/constituency/{id}", method = RequestMethod.GET)
-	public Constituency getRole(@PathVariable("id") Integer id) {
+	public Constituency getConstituencyById(@PathVariable("id") Integer id) {
 		return constituencyRepository.findConstituencyById(id);
-
 	}
+
+	@RequestMapping(value = "/api/constituency/{id}", method = RequestMethod.PUT)
+	public void deteleConstituencyById(@PathVariable("id") Integer id) {
+		constituencyRepository.deleteConstituency(id);
+	}
+
 }

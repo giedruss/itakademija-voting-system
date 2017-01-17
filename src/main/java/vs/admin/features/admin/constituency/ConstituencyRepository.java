@@ -1,5 +1,6 @@
 package vs.admin.features.admin.constituency;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ConstituencyRepository {
 
-	private static final String FIND_ALL = "SELECT c from Constituency c";
+	private static final String FIND_ALL = "SELECT c from Constituency c where deleted_date is null";
 
 	@Autowired
 	private EntityManager entityManager;
@@ -19,6 +20,7 @@ public class ConstituencyRepository {
 	@SuppressWarnings("unchecked")
 	public List<Constituency> findAllConstituencies() {
 		return entityManager.createQuery(FIND_ALL).getResultList();
+		
 
 	}
 
@@ -38,10 +40,11 @@ public class ConstituencyRepository {
 		return entityManager.find(Constituency.class, id);
 	}
 
-	public void deleteConstituency(Constituency constituency){
-		
-		Constituency merged = entityManager.merge(constituency);
-		
-		entityManager.persist(merged);
+	public void deleteConstituency(Integer id) {
+		Constituency constituency = entityManager.find(Constituency.class, id);
+		Date date = new Date();
+		constituency.setDeletedTime(date);
+		entityManager.persist(constituency);
 	}
+
 }

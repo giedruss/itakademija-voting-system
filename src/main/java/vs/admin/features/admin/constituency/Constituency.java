@@ -1,5 +1,6 @@
 package vs.admin.features.admin.constituency;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,14 +27,26 @@ public class Constituency {
 	@Column(name = "constituency_title")
 	private String title;
 
+	@Column(name = "deleted_date")
+	private Date deletedTime;
+
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "CONSTITUENCY_CONSTITUENCY_ID")
 	private List<District> districts;
 
-	public Constituency(Integer id, String title) {
+	public Constituency(Integer id, String title, Date deletedTime) {
 		this.id = id;
 		this.title = title;
+		this.deletedTime = deletedTime;
 
+	}
+
+	public Date getDeletedTime() {
+		return deletedTime;
+	}
+
+	public void setDeletedTime(Date deletedTime) {
+		this.deletedTime = deletedTime;
 	}
 
 	public Constituency() {
