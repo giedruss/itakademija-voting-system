@@ -1,9 +1,8 @@
 var DistrictListComponent = React.createClass({
-    render: function() {
-       
-{/*
-        var self = this;
-        var districtList = this.props.constituency.districts.map( function( district, index ) {
+    render: function() {     
+
+       var self = this;
+        var districtList = this.props.constituency.map( function( district, index ) {
           return (
               <tr key={index}>
               <td>{district.title}</td>
@@ -17,11 +16,11 @@ var DistrictListComponent = React.createClass({
               </button></td></tr>
           );
         });
- */}
 
       return (
               <div className="panel panel-default">
-              <h3>{this.props.constituency.title}</h3>
+              <h3>{this.props.constit.title}</h3>
+
               <table className="table">     
               <thead>  
               <tr>
@@ -34,11 +33,9 @@ var DistrictListComponent = React.createClass({
                 </tr>
                   </thead>
                   <tbody>
-              
+                  {districtList}
 {/*             
-
-                
-                <tr>
+              <tr>
               <td>L. Giros</td>
               <td>L. Giros g. 5, Vilnius</td>
               <td>4523</td>
@@ -54,11 +51,9 @@ var DistrictListComponent = React.createClass({
             </div>
               )
     }
-  });
+});
 
-ConstituencyListComponent.propTypes = {
-        constituency: React.PropTypes.array.isRequired
-};
+
 
 
 window.DistrictListComponent = DistrictListComponent;

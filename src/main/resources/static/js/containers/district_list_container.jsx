@@ -2,7 +2,8 @@ var DistrictListContainer = React.createClass({
 
     getInitialState: function() {
         return {
-            constituency: [] 
+            constituency: [] ,
+            constit: []
         };
     },
     
@@ -12,7 +13,8 @@ var DistrictListContainer = React.createClass({
         axios.get('/api/constituency/' + conId)
         .then(function (response) {
             self.setState({ 
-                constituency: response.data 
+                constituency: response.data.districts,
+                constit: response.data
             });
         });
 
@@ -31,6 +33,7 @@ var DistrictListContainer = React.createClass({
         <div>
         <DistrictListComponent 
             constituency={this.state.constituency} 
+            constit={this.state.constit}
             onAdministerRepresentative={this.handleAdministerRepresentative} 
             onAddRepresentative={this.handleAddRepresentative}/>
         <AddNewContainer redirectTo={'/add-dis'}/>
