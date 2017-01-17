@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import vs.admin.features.admin.district.District;
 
 @Repository
 public class PartyRepository {

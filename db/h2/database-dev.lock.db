@@ -1,6 +1,6 @@
 #FileLock
-#Tue Jan 17 10:34:43 EET 2017
-hostName=192.168.30.136
-id=159ab905a0b0ece63d5d3b15707a0bbac723b0062bc
+#Wed Jan 18 01:04:17 EET 2017
+hostName=Sagg-LenN500
+id=159aeac80c2f9d529e8d5dd518ab362fb533f3c941e
 method=file
-server=192.168.30.136\:58744
+server=192.168.56.1\:50882

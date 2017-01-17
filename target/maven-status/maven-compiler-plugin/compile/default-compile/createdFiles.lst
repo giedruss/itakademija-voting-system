@@ -1,6 +1,15 @@
-vs\admin\features\constitutency\model\Constituency.class
+vs\admin\features\admin\representative\RepresentativeController.class
+vs\admin\features\admin\constituency\Constituency.class
 vs\admin\features\party\model\Party.class
 vs\admin\features\candidate\model\Candidate.class
+vs\admin\features\admin\constituency\ConstituencyRepository.class
+vs\admin\features\admin\constituency\ConstituencyController.class
+vs\admin\features\party\model\PartyController.class
+vs\admin\features\admin\district\DistrictController.class
+vs\admin\features\admin\district\District.class
+vs\admin\features\admin\district\DistrictRepository.class
+vs\admin\features\admin\representative\Representative.class
 vs\Application$1.class
-vs\admin\features\district\model\District.class
+vs\admin\features\admin\representative\RepresentativeRepository.class
+vs\admin\features\party\model\PartyRepository.class
 vs\Application.class
