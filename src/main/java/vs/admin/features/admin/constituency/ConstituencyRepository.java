@@ -34,4 +34,8 @@ public class ConstituencyRepository {
 		}
 	}
 
+	public Constituency findConstituencyById(Integer id) {
+		return entityManager.find(Constituency.class, id);
+	}
+
 }

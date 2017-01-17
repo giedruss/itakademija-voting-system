@@ -19,7 +19,6 @@ public class DistrictRepository {
 	@SuppressWarnings("unchecked")
 	public List<District> findAllDistricts() {
 		return entityManager.createQuery(FIND_ALL).getResultList();
-
 	}
 
 	@Transactional
