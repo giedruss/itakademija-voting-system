@@ -24,15 +24,16 @@ public class Constituency {
 	private Integer id;
 
 	@Column(name = "constituency_title")
-	private String name;
+	private String title;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "district_id")
 	private List<District> districts;
 
-	public Constituency(Integer id, String name) {
+	public Constituency(Integer id, String title) {
 		this.id = id;
-		this.name = name;
+		this.title = title;
+
 	}
 
 	public Constituency() {
@@ -46,12 +47,20 @@ public class Constituency {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public List<District> getDistricts() {
+		return districts;
+	}
+
+	public void setDistricts(List<District> districts) {
+		this.districts = districts;
 	}
 
 }
