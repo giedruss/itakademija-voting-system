@@ -2,6 +2,9 @@ package vs.admin.features.admin.representative;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +34,9 @@ public class Representative {
 
 	@Column(name = "representative_email")
 	private String email;
+	
+	@Column(name = "deleted_date")
+	private Date deletedTime;
 
 	// private Integer districtFKID;
 
@@ -38,7 +44,8 @@ public class Representative {
 
 	}
 
-	public Representative(Integer id, String name, String surname, String loginName, String password, String email) {
+	public Representative(Integer id, String name, String surname, String loginName, String password, String email,
+			Date deletedTime) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -46,56 +53,71 @@ public class Representative {
 		this.loginName = loginName;
 		this.password = password;
 		this.email = email;
+		this.deletedTime = deletedTime;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public String getSurname() {
-		return surname;
-	}
-
-	public String getLoginName() {
-		return loginName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	public String getSurname() {
+		return surname;
+	}
+
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
 
-	// @UniqueConstraint
+	public String getLoginName() {
+		return loginName;
+	}
+
 	public void setLoginName(String loginName) {
 		this.loginName = loginName;
+	}
+
+	public String getPassword() {
+		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public Date getDeletedTime() {
+		return deletedTime;
+	}
+
+	public void setDeletedTime(Date deletedTime) {
+		this.deletedTime = deletedTime;
+	}
+
+	
+	
+	
+	
+	
+	
 
 }
 
