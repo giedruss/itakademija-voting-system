@@ -39,7 +39,7 @@ public class ConstituencyRepository {
 
 	public Constituency findConstituencyById(Integer id) {
 		Constituency constituency = entityManager.find(Constituency.class, id);
-		if (constituency.getDeletedTime() == null) {
+		if (constituency != null && constituency.getDeletedTime() == null) {
 			return constituency;
 		}
 		return null;
