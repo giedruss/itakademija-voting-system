@@ -33,11 +33,8 @@ var NavigationComponent = React.createClass( {
                         <NavLink to="/parties">Partijos</NavLink>
                         <NavLink to="/upload-cadidates">Kandidatų įkėlimas</NavLink>
                         <NavLink to="/delete-votes">Rezultatų anuliavimas</NavLink>
-                        <NavLink to="/reg-votes">Balsų registravimas (r)</NavLink>
-                        
-                        
-                        
-                        
+                        <NavLink to="/reg-votes-multi">Balsų registravimas (daug.)</NavLink>
+                        <NavLink to="/reg-votes-single">Balsų registravimas (vien.)</NavLink>           
                     </ul>
                 </div>
             </nav>

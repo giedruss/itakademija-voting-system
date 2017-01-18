@@ -1,4 +1,4 @@
-var RegisterVotesSingleContainer = React.createClass({
+var RegisterVotesMultiContainer = React.createClass({
     
     getInitialState: function() {
         return {
@@ -18,9 +18,9 @@ var RegisterVotesSingleContainer = React.createClass({
     },
     
     render: function() {
-        return <RegisterVotesSingleComponent parties={this.state.parties}  />
+        return <RegisterVotesMultiComponent parties={this.state.parties}  />
     }
 });
 
 
-window.RegisterVotesSingleContainer = RegisterVotesSingleContainer;
+window.RegisterVotesMultiContainer = RegisterVotesMultiContainer;

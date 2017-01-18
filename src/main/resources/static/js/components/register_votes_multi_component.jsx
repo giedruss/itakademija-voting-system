@@ -1,4 +1,4 @@
-var RegisterVotesSingleComponent = React.createClass({
+var RegisterVotesMultiComponent = React.createClass({
     render: function() {
         
         var self = this;
@@ -14,7 +14,7 @@ var RegisterVotesSingleComponent = React.createClass({
 
         return (
                 <form>         
-                <h3>Vienamandatės</h3>
+                <h3>Daugiamandatės</h3>
                 <h4>Apygarda: ...</h4>
                 <h4>Apylinkė: ...</h4><br />
                 {partyList}
@@ -30,8 +30,8 @@ var RegisterVotesSingleComponent = React.createClass({
     }
 });
 
-RegisterVotesSingleComponent.propTypes = {
+RegisterVotesMultiComponent.propTypes = {
         parties: React.PropTypes.array.isRequired
 };
 
-window.RegisterVotesSingleComponent = RegisterVotesSingleComponent;
+window.RegisterVotesMultiComponent = RegisterVotesMultiComponent;
