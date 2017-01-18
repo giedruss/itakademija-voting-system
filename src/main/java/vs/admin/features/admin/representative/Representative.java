@@ -34,18 +34,19 @@ public class Representative {
 
 	@Column(name = "representative_email")
 	private String email;
-	
+
 	@Column(name = "deleted_date")
 	private Date deletedTime;
 
-	// private Integer districtFKID;
+	@Column(name = "district_id")
+	private Integer districtId;
 
 	public Representative() {
 
 	}
 
 	public Representative(Integer id, String name, String surname, String loginName, String password, String email,
-			Date deletedTime) {
+			Date deletedTime, Integer districtId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -54,6 +55,7 @@ public class Representative {
 		this.password = password;
 		this.email = email;
 		this.deletedTime = deletedTime;
+		this.districtId = districtId;
 	}
 
 	public Integer getId() {
@@ -112,12 +114,13 @@ public class Representative {
 		this.deletedTime = deletedTime;
 	}
 
-	
-	
-	
-	
-	
-	
+	public Integer getDistrictId() {
+		return districtId;
+	}
+
+	public void setDistrictId(Integer districtId) {
+		this.districtId = districtId;
+	}
 
 }
 

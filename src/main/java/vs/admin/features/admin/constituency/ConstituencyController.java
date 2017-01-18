@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConstituencyController {
 
 	@Autowired
-	private ConstituencyRepository constituencyRepository;
+	ConstituencyRepository constituencyRepository;
+
+	@Autowired
+	ConstituencyService constituencyService;
 
 	@RequestMapping(value = "/api/constituency", method = RequestMethod.GET)
 	public List<Constituency> findAllConstituencies() {
-		return constituencyRepository.findAllConstituencies();
+		return constituencyService.getConstituencyWithoutDeletedDistricts();
 	}
 
 	@RequestMapping(value = "/api/constituency", method = RequestMethod.POST)

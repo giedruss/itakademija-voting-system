@@ -15,12 +15,14 @@ public class ConstituencyRepository {
 	private static final String FIND_ALL = "SELECT c from Constituency c where deleted_date is null";
 
 	@Autowired
-	private EntityManager entityManager;
+	EntityManager entityManager;
 
+	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<Constituency> findAllConstituencies() {
-		return entityManager.createQuery(FIND_ALL).getResultList();
+		List<Constituency> constituenciesList = entityManager.createQuery(FIND_ALL).getResultList();
 
+		return constituenciesList;
 	}
 
 	@Transactional

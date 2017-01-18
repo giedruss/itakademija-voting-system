@@ -1,5 +1,6 @@
 package vs.admin.features.admin.district;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -31,6 +32,14 @@ public class DistrictRepository {
 			entityManager.persist(merged);
 			return merged;
 		}
+	}
+
+	@Transactional
+	public void deleteDistrict(Integer id) {
+		District district = entityManager.find(District.class, id);
+		Date date = new Date();
+		district.setDeletedTime(date);
+		entityManager.persist(district);
 	}
 
 }

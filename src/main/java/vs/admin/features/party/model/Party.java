@@ -8,9 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "parties")
@@ -23,14 +20,14 @@ public class Party {
 
 	@Column(name = "party_title")
 	private String title;
-	
+
 	@Column(name = "party_abbreviation")
-	//@Size(max=10)
+	// @Size(max=10)
 	private String party_abbreviation;
 
 	@Column(name = "deleted_date")
 	private Date deletedTime;
-	
+
 	public Party() {
 
 	}
@@ -56,11 +53,11 @@ public class Party {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	public void setDeletedTime(Date deletedTime) {
 		this.deletedTime = deletedTime;
 	}
-	
+
 	public Date getDeletedTime() {
 		return deletedTime;
 	}
@@ -73,5 +70,4 @@ public class Party {
 		this.party_abbreviation = party_abbreviation;
 	}
 
-	
 }

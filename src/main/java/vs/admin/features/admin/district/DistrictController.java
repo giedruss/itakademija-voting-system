@@ -3,11 +3,14 @@ package vs.admin.features.admin.district;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin
 @RestController
 public class DistrictController {
 
@@ -23,5 +26,10 @@ public class DistrictController {
 	public District createOrUpdateDistrict(@RequestBody District district) {
 		return districtRepository.saveOrUpdate(district);
 
+	}
+
+	@RequestMapping(value = "/api/district/{id}", method = RequestMethod.PUT)
+	public void deteleConstituencyById(@PathVariable("id") Integer id) {
+		districtRepository.deleteDistrict(id);
 	}
 }
