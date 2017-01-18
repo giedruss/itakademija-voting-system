@@ -5,7 +5,7 @@ var RegisterVotesMultiComponent = React.createClass({
         var partyList = this.props.parties.map( function( party, index ) {
           return (
                   <div>
-                  <label>{party.title}</label>
+                  <label>{party.title} ({party.party_abbreviation})</label>
                   <input className="form-control" type="number" /><br />
                   </div>
           );
@@ -15,8 +15,8 @@ var RegisterVotesMultiComponent = React.createClass({
         return (
                 <form>         
                 <h3>Daugiamandatės</h3>
-                <h4>Apygarda: ...</h4>
-                <h4>Apylinkė: ...</h4><br />
+                <h4>Apygarda: test</h4>
+                <h4>Apylinkė: test</h4><br />
                 {partyList}
                 
                 <input type="checkbox" /> Patvirtinu, kad įvesti duomenys teisingi.<br />

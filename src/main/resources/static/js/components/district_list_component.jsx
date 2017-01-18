@@ -43,7 +43,7 @@ var DistrictListComponent = React.createClass({
               <table className="table">     
               <thead>  
               <tr>
-                  <th>Alinkės pavadinimas</th>
+                  <th>Apylinkės pavadinimas</th>
                   <th>Adresas</th>
                   <th>Rinkėjų skaičius</th>
                   <th>Atstovas</th>

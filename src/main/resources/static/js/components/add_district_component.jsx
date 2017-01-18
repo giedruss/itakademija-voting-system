@@ -6,7 +6,7 @@ var AddDistrictComponent = React.createClass({
                 <input className="form-control" type="title"  value={this.props.district.title} onChange={this.props.onFieldChange('title')}/><br />
                 
                 <label>Adresas</label><br />
-                <input className="form-control" type="text" disabled /><br />
+                <input className="form-control" type="text"   value={this.props.district.address} onChange={this.props.onFieldChange('address')}/><br />
                 
                 <label>Rinkėjų skaičius</label><br />
                 <input className="form-control" type="voters"  value={this.props.district.voters} onChange={this.props.onFieldChange('voters')}/><br />
