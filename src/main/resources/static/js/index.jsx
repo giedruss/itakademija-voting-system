@@ -34,6 +34,8 @@ ReactDOM.render((
         <Route path="/repres" component={RepresentativeInfoContainer} />
         <Route path="/parties" component={PartyListContainer} />
         <Route path="/add-party" component={AddPartyContainer} />
+        <Route path="/upload-single-cadidates" component={AdministrateSingleCandidatesContainer} />
+        <Route path="/upload-multi-cadidates" component={AdministrateMultiCandidatesContainer} />
       <Route path="*" component={NoMatch}/>
     </Route>
   </Router>
