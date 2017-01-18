@@ -43,6 +43,4 @@ var PartyListContainer = React.createClass({
   }
 });
 
-
-
 window.PartyListContainer = PartyListContainer;

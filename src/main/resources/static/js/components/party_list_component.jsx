@@ -13,10 +13,7 @@ var PartyListComponent = React.createClass({
               </button></td></tr>
           );
         });
-        
-        
-        
-        
+ 
       return (
               <div className="panel panel-default">
 
