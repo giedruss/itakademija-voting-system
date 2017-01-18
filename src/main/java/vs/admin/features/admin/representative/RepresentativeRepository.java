@@ -1,5 +1,6 @@
 package vs.admin.features.admin.representative;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,9 +9,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
+
 @Repository
 public class RepresentativeRepository {
-	private static final String FIND_ALL = "SELECT x FROM Representative x";
+	private static final String FIND_ALL = "SELECT x FROM Representative x where deleted_date is null";
 
 	@Autowired
 	private EntityManager em;
@@ -34,7 +37,7 @@ public class RepresentativeRepository {
 
 	public Representative findRepresentativeById(Integer id) {
 		Representative representative = em.find(Representative.class, id);
-		if (representative.getId() != null) {
+		if ((representative != null) && (representative.getDeletedTime() == null) ) {
 			return representative;
 		} else {
 			return null;
@@ -44,12 +47,12 @@ public class RepresentativeRepository {
 	@Transactional
 	public void deleteRepresentative(Integer id) {
 		Representative representative = em.find(Representative.class, id);
-		if (representative.getId() != null) {
-			em.remove(representative);
-		}
+		Date date = new Date();
+		representative.setDeletedTime(date);
+		em.persist(representative);
 	}
 
-	// --done //swagger // http://localhost:8080/swagger-ui.html#/
+
 
 	// validation
 	// junit
