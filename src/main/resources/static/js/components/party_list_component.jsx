@@ -6,7 +6,7 @@ var PartyListComponent = React.createClass({
           return (
               <tr key={index}>
               <td>{party.title}</td>
-              <td>test</td>
+              <td>{party.party_abbreviation}</td>
               <td>
               <button type="button" className="btn btn-default">
               <span className="glyphicon glyphicon-remove"></span>

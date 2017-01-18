@@ -3,7 +3,8 @@ var AddPartyContainer = React.createClass({
     getInitialState: function() {
         return {
             party: {
-                title: ''
+                title: '',
+                party_abbreviation: ''
             }
         }
     },
