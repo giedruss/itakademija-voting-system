@@ -13,10 +13,10 @@ var DistrictListComponent = React.createClass({
                 <td>{district.address}</td>
                 <td>{district.voters}</td>
                 <td>{rep_name}</td>
-                <td><button type="button" className="btn btn-primary" onClick={self.props.onAdministerRepresentative}>Administruoti atstovą</button></td>
+                <td><button type="button" className="btn btn-primary" onClick={self.props.onAdministerRepresentative(district)}>Administruoti atstovą</button></td>
                 <td>
-                <button type="button" className="btn btn-default">
-                <span className="glyphicon glyphicon-remove"></span>
+                <button type="button" className="btn btn-default" onClick={self.props.onRemoveItem(district)}>
+                <span className="glyphicon glyphicon-remove" ></span>
                 </button></td>
                 </tr>    
                 )
@@ -27,9 +27,9 @@ var DistrictListComponent = React.createClass({
               <td>{district.address}</td>
               <td>{district.voters}</td>
               <td>{rep_name}</td>
-              <td><button type="button" className="btn btn-primary" onClick={self.props.onAddRepresentative}>Pridėti atstovą</button></td>
+              <td><button type="button" className="btn btn-primary" onClick={self.props.onAddRepresentative(district)}>Pridėti atstovą</button></td>
               <td>
-              <button type="button" className="btn btn-default">
+              <button type="button" className="btn btn-default" onClick={self.props.onRemoveItem(district)}>
               <span className="glyphicon glyphicon-remove"></span>
               </button></td>
               </tr>

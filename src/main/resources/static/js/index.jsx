@@ -31,7 +31,7 @@ ReactDOM.render((
         <Route path="/add-rep" component={AdministrateRepresentativeContainer} />
         <Route path="/reg-votes-multi" component={RegisterVotesMultiContainer} />
         <Route path="/reg-votes-single" component={RegisterVotesSingleContainer} />
-        <Route path="/repres" component={RepresentativeInfoContainer} />
+        <Route path="/repres/:repId" component={RepresentativeInfoContainer} />
         <Route path="/parties" component={PartyListContainer} />
         <Route path="/add-party" component={AddPartyContainer} />
         <Route path="/upload-single-cadidates" component={AdministrateSingleCandidatesContainer} />
