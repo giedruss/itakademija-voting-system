@@ -18,12 +18,25 @@ var PartyListContainer = React.createClass({
 
     },
     
-    
+    handleRemoveItem: function(party) { 
+        var self = this; 
+        return function() { 
+          axios.put('/api/party/'+ party.id).then(function(response) { 
+              console.log('item deleted'); 
+              axios.get('/api/party') 
+              .then(function (response) { 
+                  self.setState({  
+                      parties: response.data  
+                  }); 
+              }); 
+          }); 
+        }; 
+      },
     
     render: function() {
         return (
         <div>
-        <PartyListComponent parties={this.state.parties}/>
+        <PartyListComponent parties={this.state.parties} onRemoveItem={this.handleRemoveItem} />
         <AddNewContainer redirectTo={'/add-party'}/>
         </div>
         )
