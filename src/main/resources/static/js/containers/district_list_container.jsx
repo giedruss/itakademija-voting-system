@@ -34,6 +34,7 @@ var DistrictListContainer = React.createClass({
         <DistrictListComponent 
             constituency={this.state.constituency} 
             constit={this.state.constit}
+            representative={this.state.representative}   
             onAdministerRepresentative={this.handleAdministerRepresentative} 
             onAddRepresentative={this.handleAddRepresentative}/>
         <AddNewContainer redirectTo={'/add-dis'}/>

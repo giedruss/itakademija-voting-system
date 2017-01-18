@@ -3,12 +3,16 @@ var DistrictListComponent = React.createClass({
 
        var self = this;
         var districtList = this.props.constituency.map( function( district, index ) {
+            var rep_name = "nepriskirta";
+            if (district.representative != null) {
+                rep_name = district.representative.name;
+            }
           return (
               <tr key={index}>
               <td>{district.title}</td>
               <td>{district.address}</td>
               <td>{district.voters}</td>
-              <td>atstovas</td>
+              <td>{rep_name}</td>
               <td><button type="button" className="btn btn-primary" onClick={self.props.onAdministerRepresentative}>Administruoti atstovą</button></td>
               <td>
               <button type="button" className="btn btn-default">
