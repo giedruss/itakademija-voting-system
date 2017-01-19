@@ -24,15 +24,22 @@ public class CandidateController {
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	@ApiOperation(value = "Get all candidates")
 	public List<Candidate>findAllCandidates() {
-		return candidateRepository.findAllCandidates();
+			return candidateRepository.findAllCandidates();
 	}
-	
-	@RequestMapping(value = "/api/candidate", method = RequestMethod.POST)
+	/*============================================================================*/
+	@RequestMapping(value = "/api/candidateparty", method = RequestMethod.POST)
 	@ResponseStatus(org.springframework.http.HttpStatus.CREATED)
-	@ApiOperation(value = "Create or update candidate")
-	public Candidate createOrUpdateCandidate(@RequestBody Candidate candidate) {
-		return candidateRepository.saveOrUpdateCandidate(candidate);
+	@ApiOperation(value = "Create or update candidate from Party")
+	public Candidate createOrUpdateCandidateFParty(@RequestBody Candidate candidate) {
+		return candidateRepository.saveOrUpdateCandidateFParty(candidate);
 	}
+	@RequestMapping(value = "/api/candidateconstituency", method = RequestMethod.POST)
+	@ResponseStatus(org.springframework.http.HttpStatus.CREATED)
+	@ApiOperation(value = "Create or update candidate from Constituency")
+	public Candidate createOrUpdateCandidateFConstituency(@RequestBody Candidate candidate) {
+		return candidateRepository.saveOrUpdateCandidateFConstituency(candidate);
+	}
+	/*============================================================================*/
 	
 	@RequestMapping(value = "/api/candidate/{id}", method = RequestMethod.GET)
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)

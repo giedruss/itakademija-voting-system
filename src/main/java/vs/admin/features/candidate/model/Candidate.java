@@ -21,7 +21,7 @@ public class Candidate {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "candidate_id")
+	@Column(name = "candidate_Id")
 	private Integer candidateID;
 
 	@Column(name = "candidate_Name")
@@ -30,35 +30,39 @@ public class Candidate {
 	@Column(name = "candidate_Surname")
 	private String candidateSurname;
 
-	@Column(name = "candidate_DateOfBirth")
+	@Column(name = "candidate_Date_Of_Birth")
 	private String candidateDateOfBirth; // Date or String???
 
-	@Column(name = "candidate_PersonalID")
+	@Column(name = "candidate_Personal_ID")
 	private String candidatePersonalID;
 
 	@Column(name = "candidate_Description")
 	private String candidateDescription;
 	/*-----------------------------------------------------------------*/
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "candidate_PartyId")
+	@JoinColumn(name = "candidate_Party_Id")
 	private Party party;
 	/*-----------------------------------------------------------------*/
-	@Column(name = "candidate_NumberInParty")
+	@Column(name = "candidate_Number_In_Party")
 	private Integer candidateNumberInParty;
 	/*-----------------------------------------------------------------*/
-	@OneToOne(cascade = CascadeType.ALL)						// cascade type perduoda veiksmus per visa range??
-	@JoinColumn(name = "candidate_ConstituencyId")	// service kad rodytu istrintus tik pagal data
+	@OneToOne(cascade = CascadeType.ALL) // cascade type perduoda veiksmus per
+																			// visa range??
+	@JoinColumn(name = "candidate_Constituency_Id") // service district'e kad
+													// rodytu districtus be
+													// istrintu representative
 	private Constituency constituency;
 	/*-----------------------------------------------------------------*/
-	@Column(name = "candidate_DeletedDate")
+	@Column(name = "candidate_Deleted_Date")
 	private Date candidateDeletedDate;
 
 	public Candidate() {
 	}
 
+	/* From Constituency */
 	public Candidate(Integer candidateID, String candidateName, String candidateSurname, String candidateDateOfBirth,
 			String candidatePersonalID, String candidateDescription, Party party, Integer candidateNumberInParty,
-			Constituency constituency, Date candidateDeletedDate) {
+			Date candidateDeletedDate) {
 		super();
 		this.candidateID = candidateID;
 		this.candidateName = candidateName;
@@ -68,6 +72,20 @@ public class Candidate {
 		this.candidateDescription = candidateDescription;
 		this.party = party;
 		this.candidateNumberInParty = candidateNumberInParty;
+		this.candidateDeletedDate = candidateDeletedDate;
+	}
+
+	/* From Party */
+	public Candidate(Integer candidateID, String candidateName, String candidateSurname, String candidateDateOfBirth,
+			String candidatePersonalID, String candidateDescription, Constituency constituency,
+			Date candidateDeletedDate) {
+		super();
+		this.candidateID = candidateID;
+		this.candidateName = candidateName;
+		this.candidateSurname = candidateSurname;
+		this.candidateDateOfBirth = candidateDateOfBirth;
+		this.candidatePersonalID = candidatePersonalID;
+		this.candidateDescription = candidateDescription;
 		this.constituency = constituency;
 		this.candidateDeletedDate = candidateDeletedDate;
 	}
