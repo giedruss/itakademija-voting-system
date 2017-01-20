@@ -32,11 +32,7 @@ public class CandidateRepository {
 			em.persist(candidateParty);
 			return candidateParty;
 		} else {
-			Candidate candidateParty = new Candidate(candidate.getCandidateID(), candidate.getCandidateName(),
-					candidate.getCandidateSurname(), candidate.getCandidateDateOfBirth(),
-					candidate.getCandidatePersonalID(), candidate.getCandidateDescription(), candidate.getParty(),
-					candidate.getCandidateNumberInParty(), candidate.getCandidateDeletedDate());
-			Candidate merged = em.merge(candidateParty);
+			Candidate merged = em.merge(candidate);
 			em.persist(merged);
 			return merged;
 		}
@@ -52,11 +48,7 @@ public class CandidateRepository {
 			em.persist(candidateConstituency);
 			return candidateConstituency;
 		} else {
-			Candidate candidateConstituency = new Candidate(candidate.getCandidateID(), candidate.getCandidateName(),
-					candidate.getCandidateSurname(), candidate.getCandidateDateOfBirth(),
-					candidate.getCandidatePersonalID(), candidate.getCandidateDescription(),
-					candidate.getConstituency(), candidate.getCandidateDeletedDate());
-			Candidate merged = em.merge(candidateConstituency);
+			Candidate merged = em.merge(candidate);
 			em.persist(merged);
 			return merged;
 		}
