@@ -61,7 +61,7 @@ var DistrictListContainer = React.createClass({
             onAdministerRepresentative={this.handleAdministerRepresentative} 
             onAddRepresentative={this.handleAddRepresentative}
             onRemoveItem={this.handleRemoveItem} />
-        <AddNewContainer redirectTo={'/add-dis'}/>
+        <AddNewContainer redirectTo={'/add-dis/' + this.state.constit.id}/>
         </div>
         )
   }

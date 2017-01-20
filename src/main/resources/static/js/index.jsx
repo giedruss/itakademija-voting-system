@@ -27,7 +27,7 @@ ReactDOM.render((
         <Route path="/con" component={ConstituencyListContainer} />
         <Route path="/dis/:conId" component={DistrictListContainer} />
         <Route path="/add-con" component={AddConstituencyContainer} />
-        <Route path="/add-dis" component={AddDistrictContainer} />
+        <Route path="/add-dis/:conId" component={AddDistrictContainer} />
         <Route path="/add-rep" component={AdministrateRepresentativeContainer} />
         <Route path="/reg-votes-multi" component={RegisterVotesMultiContainer} />
         <Route path="/reg-votes-single" component={RegisterVotesSingleContainer} />
