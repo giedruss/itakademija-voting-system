@@ -2,8 +2,6 @@ var RegisterVotesMultiComponent = React.createClass({
     render: function() {      
         var self = this;
         var partyList = this.props.parties.map( function( party, index ) {
-            
-
           return (
                   <div key={index}>
                   <label>{party.title} ({party.party_abbreviation}) - {index}</label>
@@ -16,11 +14,7 @@ var RegisterVotesMultiComponent = React.createClass({
                   </div>
           );
         });
-        
-        
-        
-        
-        
+            
         return (
                 <form>         
                 <h3>Daugiamandatės</h3>

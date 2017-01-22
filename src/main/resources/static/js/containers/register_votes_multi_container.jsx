@@ -1,6 +1,6 @@
 var RegisterVotesMultiContainer = React.createClass({
             
-    getInitialState: function() { 
+/*    getInitialState: function() { 
         var voteList = [];
        for (var i = 0; i < 3; i++) {
        var vote = 'vote' + i;
@@ -10,10 +10,28 @@ var RegisterVotesMultiContainer = React.createClass({
             election: {  
                 vote: ''
             }
-        };  
-        
+        };         
        }        
+    },*/
+    
+    getInitialState: function() { 
+        var voteList = [];
+
+       for (var i = 0; i < 3; i++) {
+           var vote = 'vote' + i + ': \'\'';
+           voteList.push(vote);
+
+       }
+        return {            
+            parties: [],
+            election: {  
+                voteList
+            }
+        }; 
+        
+              
     },
+    
     
     componentWillMount: function() {
         var self = this;
@@ -36,12 +54,9 @@ var RegisterVotesMultiContainer = React.createClass({
     
     handleVoteClick: function(e) {
         e.preventDefault();      
-
         for(var i=0; i < this.state.parties.length; i++) {
-
         axios.post('/api/reg-votes-multi', {
-
-            votes: this.state.election.vote0, 
+            votes: this.state.election.voteFin[i], 
             party: {id: this.state.parties[i].id},
             district: { id: '1'},
             enetered_date: Date.now()
