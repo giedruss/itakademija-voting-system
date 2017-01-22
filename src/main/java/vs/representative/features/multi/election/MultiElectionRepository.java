@@ -1,5 +1,6 @@
 package vs.representative.features.multi.election;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vs.admin.features.party.model.Party;
+
+
 
 @Repository
 public class MultiElectionRepository {
@@ -33,5 +36,21 @@ public class MultiElectionRepository {
 			entityManager.persist(merged);
 			return merged;
 		}
+	}
+	
+	public MultiElection findMultiElectionById(Integer id) {
+		MultiElection multiElection = entityManager.find(MultiElection.class, id);
+		if (multiElection.getDeleted_date() == null) {
+			return multiElection;
+		}
+		return null;
+	}
+	
+	@Transactional
+	public void deleteMultiElection(Integer id) {
+		MultiElection multiElection = entityManager.find(MultiElection.class, id);
+		Date date = new Date();
+		multiElection.setDeleted_date(date);
+		entityManager.persist(multiElection);
 	}
 }
