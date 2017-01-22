@@ -3,19 +3,23 @@ var RegisterVotesMultiComponent = React.createClass({
         var self = this;
         var partyList = this.props.parties.map( function( party, index ) {
             
-        
+
           return (
                   <div key={index}>
-                  <label>{party.title} ({party.party_abbreviation})</label>
+                  <label>{party.title} ({party.party_abbreviation}) - {index}</label>
                   <input 
                       className="form-control" 
                       type="number"  
-                      value={self.props.election.votes.index} 
-                      onChange={self.props.onFieldChange('votes')} 
+                      value={self.props.election.votes} 
+                      onChange={self.props.onFieldChange('vote' + index)} 
                   /><br />
                   </div>
           );
         });
+        
+        
+        
+        
         
         return (
                 <form>         

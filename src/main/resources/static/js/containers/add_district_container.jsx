@@ -5,7 +5,7 @@ var AddDistrictContainer = React.createClass({
             district: {
                 title: '',
                 voters: '',
-                address: ''
+                address: ''                
             }
         }
     },

@@ -1,19 +1,18 @@
 var RegisterVotesMultiContainer = React.createClass({
-    
-    getInitialState: function() {
-        return {
+            
+    getInitialState: function() { 
+        var voteList = [];
+       for (var i = 0; i < 3; i++) {
+       var vote = 'vote' + i;
+       voteList.push(vote);
+        return {            
             parties: [],
-            election: {                             
-                votes: '',
-                enetered_date: Date.now(),
-                party: {
-                    id: '1'
-                },
-                district: {
-                    id: '1'
-                }
+            election: {  
+                vote: ''
             }
-        };
+        };  
+        
+       }        
     },
     
     componentWillMount: function() {
@@ -24,25 +23,31 @@ var RegisterVotesMultiContainer = React.createClass({
                 parties: response.data
             });
         });
-
     },
     
     handleFieldChange: function(fieldName) {
-        var self = this;
-        return function(e) {
+        var self = this;      
+        return function(e) {         
           var election = self.state.election;
           election[fieldName] = e.target.value;
-          self.setState({ election: election });
-        };
+          self.setState({ election: election });          
+        };        
     },
     
     handleVoteClick: function(e) {
-        e.preventDefault();
-        var self = this;
+        e.preventDefault();      
+
         for(var i=0; i < this.state.parties.length; i++) {
-        axios.post('/api/reg-votes-multi', this.state.election).then(function () {
+
+        axios.post('/api/reg-votes-multi', {
+
+            votes: this.state.election.vote0, 
+            party: {id: this.state.parties[i].id},
+            district: { id: '1'},
+            enetered_date: Date.now()
+        })
+            .then(function () {
             console.log('vote added');
-/*            self.context.router.push('/parties');*/
           });
         };
         this.context.router.push('/parties');
@@ -57,6 +62,7 @@ var RegisterVotesMultiContainer = React.createClass({
         />
     }
 });
+
 
 RegisterVotesMultiContainer.contextTypes = {
         router: React.PropTypes.object.isRequired,
