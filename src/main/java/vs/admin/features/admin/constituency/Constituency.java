@@ -1,5 +1,6 @@
 package vs.admin.features.admin.constituency;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,25 +22,18 @@ public class Constituency {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "constituency_id")
+	@Column
 	private Integer id;
 
-	@Column(name = "constituency_title")
+	@Column
 	private String title;
 
-	@Column(name = "deleted_date")
+	@Column
 	private Date deletedTime;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CONSTITUENCY_CONSTITUENCY_ID")
-	private List<District> districts;
-
-	public Constituency(Integer id, String title, Date deletedTime) {
-		this.id = id;
-		this.title = title;
-		this.deletedTime = deletedTime;
-
-	}
+	@JoinColumn(name = "constituency_id", referencedColumnName = "id")
+	private List<District> districts = new ArrayList<>();
 
 	public Date getDeletedTime() {
 		return deletedTime;

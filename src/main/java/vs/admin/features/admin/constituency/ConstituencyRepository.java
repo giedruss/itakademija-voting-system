@@ -12,7 +12,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ConstituencyRepository {
 
-	private static final String FIND_ALL = "SELECT c from Constituency c where deleted_date is null";
+	private static final String FIND_ALL = "SELECT DISTINCT c FROM Constituency c LEFT JOIN fetch c.districts cd "
+			+ "WHERE c.deletedTime IS NULL AND cd.deletedTime is NULL ORDER BY c.id";
+
+	private static final String FIND_BY_ID = "SELECT DISTINCT c FROM Constituency c "
+			+ "LEFT JOIN fetch c.districts cd WHERE c.deletedTime IS NULL AND c.id = :id "
+			+ "AND cd.deletedTime is NULL ORDER BY c.id";
 
 	@Autowired
 	EntityManager entityManager;
@@ -38,11 +43,9 @@ public class ConstituencyRepository {
 	}
 
 	public Constituency findConstituencyById(Integer id) {
-		Constituency constituency = entityManager.find(Constituency.class, id);
-		if (constituency != null && constituency.getDeletedTime() == null) {
-			return constituency;
-		}
-		return null;
+		Constituency constituency = (Constituency) entityManager.createQuery(FIND_BY_ID).setParameter("id", id)
+				.getSingleResult();
+		return constituency;
 	}
 
 	@Transactional

@@ -25,7 +25,6 @@ public class DistrictController {
 	@RequestMapping(value = "/api/district", method = RequestMethod.POST)
 	public District createOrUpdateDistrict(@RequestBody District district) {
 		return districtRepository.saveOrUpdate(district);
-
 	}
 
 	@RequestMapping(value = "/api/district/{id}", method = RequestMethod.PUT)

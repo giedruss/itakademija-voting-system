@@ -3,8 +3,6 @@ package vs.admin.features.admin.representative;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,27 +14,24 @@ public class Representative {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "representative_id")
+	@Column
 	private Integer id;
 
-	@Column(name = "representative_name")
+	@Column
 	private String name;
 
-	@Column(name = "representative_surname")
+	@Column
 	private String surname;
 
 	// @UniqueConstraint
-	@Column(name = "representative_loginname")
+	@Column
 	private String loginName;
 
-	@Column(name = "representative_password")
+	@Column
 	private String password;
 
-	@Column(name = "representative_email")
+	@Column
 	private String email;
-
-	@Column(name = "deleted_date")
-	private Date deletedTime;
 
 	@Column(name = "district_id")
 	private Integer districtId;
@@ -46,7 +41,7 @@ public class Representative {
 	}
 
 	public Representative(Integer id, String name, String surname, String loginName, String password, String email,
-			Date deletedTime, Integer districtId) {
+			Integer districtId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -54,7 +49,6 @@ public class Representative {
 		this.loginName = loginName;
 		this.password = password;
 		this.email = email;
-		this.deletedTime = deletedTime;
 		this.districtId = districtId;
 	}
 
@@ -104,14 +98,6 @@ public class Representative {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Date getDeletedTime() {
-		return deletedTime;
-	}
-
-	public void setDeletedTime(Date deletedTime) {
-		this.deletedTime = deletedTime;
 	}
 
 	public Integer getDistrictId() {

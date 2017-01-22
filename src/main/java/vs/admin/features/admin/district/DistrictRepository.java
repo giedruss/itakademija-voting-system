@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class DistrictRepository {
 
-	private static final String FIND_ALL = "SELECT d from District d";
+	private static final String FIND_ALL = "SELECT d FROM District d WHERE deleted_time IS NULL";
 
 	@Autowired
 	private EntityManager entityManager;

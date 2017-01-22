@@ -1,6 +1,5 @@
 package vs.admin.features.admin.representative;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class RepresentativeRepository {
-	private static final String FIND_ALL = "SELECT x FROM Representative x where deleted_date is null";
+	private static final String FIND_ALL = "SELECT x FROM Representative x";
 
 	@Autowired
 	private EntityManager em;
@@ -37,7 +36,7 @@ public class RepresentativeRepository {
 
 	public Representative findRepresentativeById(Integer id) {
 		Representative representative = em.find(Representative.class, id);
-		if ((representative != null) && (representative.getDeletedTime() == null) ) {
+		if (representative != null) {
 			return representative;
 		} else {
 			return null;
@@ -47,9 +46,7 @@ public class RepresentativeRepository {
 	@Transactional
 	public void deleteRepresentative(Integer id) {
 		Representative representative = em.find(Representative.class, id);
-		Date date = new Date();
-		representative.setDeletedTime(date);
-		em.persist(representative);
+		em.remove(representative);
 	}
 
 

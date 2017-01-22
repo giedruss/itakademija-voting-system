@@ -1,6 +1,8 @@
 package vs.admin.features.admin.district;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import vs.admin.features.admin.representative.Representative;
@@ -20,44 +22,54 @@ public class District {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "district_id")
+	@Column
 	private Integer id;
 
-	@Column(name = "district_title")
+	@Column
 	private String title;
 
-	@Column(name = "number_of_voters")
-	private Long voters;
+	@Column
+	private Long numberOfVoters;
 
-	@Column(name = "district_address")
+	@Column
 	private String address;
 
-	@Column(name = "deleted_date")
+	@Column
 	private Date deletedTime;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "district_id")
-	private Representative representative;
+	@Column(name = "constituency_id")
+	private Integer constituencyId;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "district_Id", referencedColumnName = "id")
+	private List<Representative> representatives = new ArrayList<>();
 
 	public District() {
 
 	}
 
-	public District(Integer id, String title, Long voters, String address, Date deleteTime) {
-		this.id = id;
-		this.title = title;
-		this.voters = voters;
-		this.address = address;
-		this.deletedTime = deleteTime;
-
+	public Long getNumberOfVoters() {
+		return numberOfVoters;
 	}
 
-	public Representative getRepresentative() {
-		return representative;
+	public void setNumberOfVoters(Long numberOfVoters) {
+		this.numberOfVoters = numberOfVoters;
 	}
 
-	public void setRepresentative(Representative representative) {
-		this.representative = representative;
+	public Integer getConstituencyId() {
+		return constituencyId;
+	}
+
+	public void setConstituencyId(Integer constituencyId) {
+		this.constituencyId = constituencyId;
+	}
+
+	public List<Representative> getRepresentatives() {
+		return representatives;
+	}
+
+	public void setRepresentatives(List<Representative> representatives) {
+		this.representatives = representatives;
 	}
 
 	public Date getDeletedTime() {
@@ -90,14 +102,6 @@ public class District {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public Long getVoters() {
-		return voters;
-	}
-
-	public void setVoters(Long voters) {
-		this.voters = voters;
 	}
 
 }

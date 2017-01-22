@@ -3,6 +3,7 @@ package vs.admin.features.admin.representative;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import io.swagger.annotations.ApiOperation; //swagger
 
 @RestController
 @Api // swagger
+@CrossOrigin
 public class RepresentativeController {
 
 	@Autowired

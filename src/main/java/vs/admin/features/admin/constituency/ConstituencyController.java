@@ -17,12 +17,9 @@ public class ConstituencyController {
 	@Autowired
 	ConstituencyRepository constituencyRepository;
 
-	@Autowired
-	ConstituencyService constituencyService;
-
 	@RequestMapping(value = "/api/constituency", method = RequestMethod.GET)
 	public List<Constituency> findAllConstituencies() {
-		return constituencyService.getConstituencyWithoutDeletedDistricts();
+		return constituencyRepository.findAllConstituencies();
 	}
 
 	@RequestMapping(value = "/api/constituency", method = RequestMethod.POST)
