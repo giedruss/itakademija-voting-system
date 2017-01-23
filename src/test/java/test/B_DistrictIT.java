@@ -30,9 +30,9 @@ import vs.admin.features.admin.district.District;
 import vs.admin.features.admin.district.DistrictRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = { RepresentativesIT.Config.class,
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = { B_DistrictIT.Config.class,
 		Application.class })
-public class RepresentativesIT {
+public class B_DistrictIT {
 
 	private static final String URI = "/api/district"; // keisti++
 	JSONParser parser = new JSONParser(0);
@@ -146,9 +146,9 @@ public class RepresentativesIT {
 	@Test
 	public void deleteDistrict() {
 
-		District foundById = deleteDistrictByIdTest(2);
+		District deletedById = deleteDistrictByIdTest(2);
 
-		Assert.assertThat(foundById.getDeletedTime(), is((not(null))));
+		Assert.assertThat(deletedById.getDeletedTime(), is((not(null))));
 	}
 
 	private JSONObject stringToJson(final String jstring) {

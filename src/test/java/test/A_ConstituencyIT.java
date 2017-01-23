@@ -29,9 +29,9 @@ import vs.admin.features.admin.constituency.Constituency;
 import vs.admin.features.admin.constituency.ConstituencyRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = { ConstituencyIT.Config.class,
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = { A_ConstituencyIT.Config.class,
 		Application.class })
-public class ConstituencyIT {
+public class A_ConstituencyIT {
 
 	private static final String URI = "/api/constituency";
 	JSONParser parser = new JSONParser(0);
