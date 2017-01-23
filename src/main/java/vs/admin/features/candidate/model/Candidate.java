@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,21 +39,26 @@ public class Candidate {
 
 	@Column(name = "candidate_Description")
 	private String candidateDescription;
+	
+	
 	/*-----------------------------------------------------------------*/
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "candidate_Party_Id")
+	@ManyToOne
+	@JoinColumn(name = "candidate_Party_Id") //referencedColumnName = "id"
 	private Party party;
 	/*-----------------------------------------------------------------*/
+	
+	
 	@Column(name = "candidate_Number_In_Party")
 	private Integer candidateNumberInParty;
+	
+	
 	/*-----------------------------------------------------------------*/
-	@OneToOne(cascade = CascadeType.ALL) // cascade type perduoda veiksmus per
-																			// visa range??
-	@JoinColumn(name = "candidate_Constituency_Id") // service district'e kad
-													// rodytu districtus be
-													// istrintu representative
+	@ManyToOne
+	@JoinColumn(name = "candidate_Constituency_Id")
 	private Constituency constituency;
 	/*-----------------------------------------------------------------*/
+	
+	
 	@Column(name = "candidate_Deleted_Date")
 	private Date candidateDeletedDate;
 

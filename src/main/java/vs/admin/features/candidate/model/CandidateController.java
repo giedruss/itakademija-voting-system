@@ -49,7 +49,7 @@ public class CandidateController {
 	}
 	
 	@RequestMapping(value = "/api/candidate/{id}", method = RequestMethod.DELETE)
-	@ResponseStatus(org.springframework.http.HttpStatus.OK)
+	@ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
 	@ApiOperation(value = "Delete candidate by id (adds deletion date)")
 	public void deleteCandidateById(@PathVariable("id") Integer id) {
 		candidateRepository.deleteCandidateById(id);
