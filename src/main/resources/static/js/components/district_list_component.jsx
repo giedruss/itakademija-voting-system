@@ -55,6 +55,7 @@ var DistrictListComponent = React.createClass({
                   {districtList}
                   </tbody>
               </table>
+                  
             </div>
               )
     }

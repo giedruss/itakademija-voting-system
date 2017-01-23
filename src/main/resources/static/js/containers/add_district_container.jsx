@@ -22,9 +22,14 @@ var AddDistrictContainer = React.createClass({
     handleAddDistrict: function(e) {
         e.preventDefault();
         var self = this;
-        axios.post('/api/district', this.state.district).then(function () {
+        axios.post('/api/district', {
+                title: this.state.district.title,
+                voters: this.state.district.voters,
+                address: this.state.district.address,
+                constituencyId: this.props.params.conId
+        }).then(function () {
             console.log('district added');
-            self.context.router.push('/dis');
+            self.context.router.push('/dis/' + self.props.params.conId);
           });
     },
     
