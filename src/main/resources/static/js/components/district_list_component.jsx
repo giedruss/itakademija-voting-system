@@ -4,8 +4,8 @@ var DistrictListComponent = React.createClass({
        var self = this;
         var districtList = this.props.districts.map( function( district, index ) {
             var rep_name = "nepriskirta";
-            if (district.representative != null) {
-                rep_name = district.representative.name;
+            if (district.representatives.length != 0) {
+                rep_name = district.representatives[0].name;
                 
                 return (
                 <tr key={index}>

@@ -23,14 +23,14 @@ var DistrictListContainer = React.createClass({
     handleAdministerRepresentative: function(district) {
         var self = this;
         return function() {
-                self.context.router.push('/repres/' + district.representative.id);
+                self.context.router.push('/repres/' + district.representatives[0].id);
         }
     },
     
-    handleAddRepresentative: function() {
+    handleAddRepresentative: function(district) {
         var self = this;
         return function() {
-                self.context.router.push('/add-rep');
+                self.context.router.push('/add-rep/' + district.id);
         }
         
     },
