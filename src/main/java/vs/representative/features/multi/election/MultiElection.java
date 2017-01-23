@@ -19,19 +19,19 @@ public class MultiElection {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="multi_id")
+	@Column
 	private Integer id;
 	
-	@Column(name="votes")
+	@Column
 	private Integer votes;
 	
-	@Column(name="entered_date")
+	@Column
 	private Date enetered_date;
 	
-	@Column(name="published_date")
+	@Column
 	private Date published_date;
 	
-	@Column(name="deleted_date")
+	@Column
 	private Date deleted_date;
 	
 	@ManyToOne
