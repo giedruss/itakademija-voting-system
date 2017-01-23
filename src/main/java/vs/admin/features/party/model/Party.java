@@ -15,17 +15,17 @@ public class Party {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "party_id")
+	@Column
 	private Integer id;
 
-	@Column(name = "party_title")
+	@Column
 	private String title;
 
-	@Column(name = "party_abbreviation")
+	@Column
 	// @Size(max=10)
 	private String party_abbreviation;
 
-	@Column(name = "deleted_date")
+	@Column
 	private Date deletedTime;
 
 	public Party() {

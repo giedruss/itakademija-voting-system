@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PartyRepository {
 
-	private static final String FIND_ALL = "Select p FROM Party p where deleted_date is null";
+	private static final String FIND_ALL = "Select p FROM Party p where deletedTime is null";
 
 	@Autowired
 	private EntityManager entityManager;
