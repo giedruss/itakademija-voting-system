@@ -34,26 +34,22 @@ import vs.admin.features.candidate.model.CandidateRepository;
 public class E_CandidateIT {
 
 	private static final String URI = "/api/candidate";
-	private static final String URI_PARTY = "/api/candidateparty";
-	private static final String URI_CONSTITUENCY = "/api/candidateconstituency";
 	JSONParser parser = new JSONParser(0);
 
 	@Autowired
 	private TestRestTemplate restTemplate;
 
-	private void createOrUpdateCandidateFPartyTest(final JSONObject createCandidate) {
+	
+	
+	
+	private void createOrUpdateCandidateTest(final JSONObject createCandidate) {
 		// Exercise
-		ResponseEntity<Void> response = restTemplate.postForEntity(URI_PARTY, createCandidate, Void.class);
+		ResponseEntity<Void> response = restTemplate.postForEntity(URI, createCandidate, Void.class);
 		// Verify
 		Assert.assertThat(response.getStatusCode(), CoreMatchers.is(HttpStatus.CREATED));
 	}
 
-	private void createOrUpdateCandidateFConstituencyTest(final JSONObject createCandidate) {
-		// Exercise
-		ResponseEntity<Void> response = restTemplate.postForEntity(URI_CONSTITUENCY, createCandidate, Void.class);
-		// Verify
-		Assert.assertThat(response.getStatusCode(), CoreMatchers.is(HttpStatus.CREATED));
-	}
+
 
 	private List<Candidate> findAllCandidatesTest() {
 		// Setup
@@ -99,71 +95,162 @@ public class E_CandidateIT {
 
 	// keisti
 	@Test
-	public void createParties() {
+	public void createCandidates() {
 
 		// PartyPeople
-		final String candidate_01 = "{\"candidateID\": null, " + "\"candidateName\": \"TOMAS\", "
-				+ "\"candidateSurname\": \"AMBRAZAS\", " + "\"candidateDateOfBirth\": \"1970-06-01\", "
-				+ "\"candidatePersonalID\": \"37006010000\", "
-				+ "\"candidateDescription\": \"Nuuu kaaa, ir vel valdzioj busiu?\", " + "\"party\": {\"id\": 1}, "
-				+ "\"candidateNumberInParty\": 1}";
-		final String candidate_02 = "{\"candidateID\": null, " + "\"candidateName\": \"ALGIRDAS\", "
-				+ "\"candidateSurname\": \"PALECKIS\", " + "\"candidateDateOfBirth\": \"1901-08-19\", "
-				+ "\"candidatePersonalID\": \"30108190000\", " + "\"candidateDescription\": \"Tai man dar reikia….\", "
-				+ "\"party\": {\"id\": 1}, " + "\"candidateNumberInParty\": 2}";
-		final String candidate_03 = "{\"candidateID\": null, " + "\"candidateName\": \"JURIJUS\", "
-				+ "\"candidateSurname\": \"SUBOTINAS\", " + "\"candidateDateOfBirth\": \"1989-07-16\", "
-				+ "\"candidatePersonalID\": \"38907160000\", " + "\"candidateDescription\": \"Szto cybie nada\", "
-				+ "\"party\": {\"id\": 2}, " + "\"candidateNumberInParty\": 1}";
+		
+		/*
+		{
+"candidateDateOfBirth": "string",
+					"candidateID": null,
+					"candidateName": "string",
+					"candidateSurname": "string",
+					"candidatePersonalID": "string",
+					"candidateDescription": "string",
+					"candidateNumberInParty": 23,
+"candidateDeletedDate": null,
+	 	  
+		
+"candidateConstituency": {"id": 1},
+"candidateParty": {"id": 3}
+}
+
+
+
+
+
+
+		*/
+		final String candidate_01 = "{"
+													+ "\"candidateID\": null, " 
+													+ "\"candidateName\": \"TOMAS\", "
+													+ "\"candidateSurname\": \"AMBRAZAS\", " 
+													+ "\"candidateDateOfBirth\": \"1970-06-01\", "
+													+ "\"candidatePersonalID\": \"37006010000\", "
+													+ "\"candidateDescription\": \"Nuuu kaaa, ir vel valdzioj busiu?\", " 
+													
+													+ "\"candidateParty\": {\"id\": 1}, "
+													+ "\"candidateConstituency\": null, "
+													
+													+ "\"candidateNumberInParty\": 1"
+													+ "}";
+		
+		final String candidate_02 = "{\"candidateID\": null, " 
+													+ "\"candidateName\": \"ALGIRDAS\", "
+													+ "\"candidateSurname\": \"PALECKIS\", " 
+													+ "\"candidateDateOfBirth\": \"1901-08-19\", "
+													+ "\"candidatePersonalID\": \"30108190000\", " 
+													+ "\"candidateDescription\": \"Tai man dar reikia….\", "
+													
+													+ "\"candidateParty\": {\"id\": 1}, "
+													+ "\"candidateConstituency\": null, "
+													
+													+ "\"candidateNumberInParty\": 2}";
+		
+		final String candidate_03 = "{\"candidateID\": null, " 
+													+ "\"candidateName\": \"JURIJUS\", "
+													+ "\"candidateSurname\": \"SUBOTINAS\", " 
+													+ "\"candidateDateOfBirth\": \"1989-07-16\", "
+													+ "\"candidatePersonalID\": \"38907160000\", " 
+													+ "\"candidateDescription\": \"Szto cybie nada\", "
+													
+													+ "\"candidateParty\": {\"id\": 2}, "
+													+ "\"candidateConstituency\": null, "
+													
+													+ "\"candidateNumberInParty\": 1}";
 
 		// PartyPeopleWithConstituency
 		// PartyInput
-		final String candidate_04 = "{\"candidateID\": null, " + "\"candidateName\": \"ARTŪRAS\", "
-				+ "\"candidateSurname\": \"MELIANAS\", " + "\"candidateDateOfBirth\": \"1965-04-05\", "
-				+ "\"candidatePersonalID\": \"36504050000\", "
-				+ "\"candidateDescription\": \"Mane isrinko tauta ir palaiko dievas\", " + "\"party\": {\"id\": 3}, "
-				+ "\"candidateNumberInParty\": 1}";
+		final String candidate_04 = "{\"candidateID\": null, " 
+													+ "\"candidateName\": \"ARTŪRAS\", "
+													+ "\"candidateSurname\": \"MELIANAS\", " 
+													+ "\"candidateDateOfBirth\": \"1965-04-05\", "
+													+ "\"candidatePersonalID\": \"36504050000\", "
+													+ "\"candidateDescription\": \"Mane isrinko tauta ir palaiko dievas\", " 
+													
+													+ "\"candidateParty\": {\"id\": 3}, "
+													+ "\"candidateConstituency\": null, "
+													
+													+ "\"candidateNumberInParty\": 1}";
+		
 		// ConstituencyInput
-		final String candidate_05 = "{\"candidateID\": null, " + "\"candidateName\": \"ARTŪRAS\", "
-				+ "\"candidateSurname\": \"MELIANAS\", " + "\"candidateDateOfBirth\": \"1965-04-05\", "
-				+ "\"candidatePersonalID\": \"36504050000\", "
-				+ "\"candidateDescription\": \"Mane isrinko tauta ir palaiko dievas\", "
-				+ "\"constituency\": {\"id\": 1}";
+		final String candidate_05 = "{\"candidateID\": 4, " 
+												+ "\"candidateName\": \"ARTŪRAS\", "
+												+ "\"candidateSurname\": \"MELIANAS\", " 
+												+ "\"candidateDateOfBirth\": \"1965-04-05\", "
+												+ "\"candidatePersonalID\": \"36504050000\", "
+												+ "\"candidateDescription\": \"Mane isrinko tauta ir palaiko dievas\", "
+												
+												+ "\"candidateParty\": null, "	//perraso ankstesnius duomenis i null
+												+ "\"candidateNumberInParty\": null, " //perraso ankstesnius duomenis i null
+												
+												+ "\"candidateConstituency\": {\"id\": 1}}";
 
 		// ConstituencyHeroes
-		final String candidate_06 = "{\"candidateID\": null, " + "\"candidateName\": \"ARIMANTAS\", "
-				+ "\"candidateSurname\": \"DUMČIUS\", " + "\"candidateDateOfBirth\": \"1991-11-29\", "
-				+ "\"candidatePersonalID\": \"39111290000\", "
-				+ "\"candidateDescription\": \"Vape nation, pusiu uz visus\", " + "\"constituency\": {\"id\": 2}";
-		final String candidate_07 = "{\"candidateID\": null, " + "\"candidateName\": \"VIDA MARIJA\", "
-				+ "\"candidateSurname\": \"ČIGRIEJIENĖ\", " + "\"candidateDateOfBirth\": \"1927-09-23\", "
-				+ "\"candidatePersonalID\": \"42709230000\", "
-				+ "\"candidateDescription\": \"Ka pazadejau ta padarysiu, a jus netikit manim?\", "
-				+ "\"constituency\": {\"id\": 3}";
-		final String candidate_08 = "{\"candidateID\": null, " + "\"candidateName\": \"VIAČESLAV\", "
-				+ "\"candidateSurname\": \"TITOV\", " + "\"candidateDateOfBirth\": \"1953-03-03\", "
-				+ "\"candidatePersonalID\": \"45303030000\", " + "\"candidateDescription\": \"Boze moj\", "
-				+ "\"constituency\": {\"id\": 4}";
-		final String candidate_09 = "{\"candidateID\": null, " + "\"candidateName\": \"BRONISLOVAS\", "
-				+ "\"candidateSurname\": \"MATELIS\", " + "\"candidateDateOfBirth\": \"1944-05-12\", "
-				+ "\"candidatePersonalID\": \"34405120000\", "
-				+ "\"candidateDescription\": \"Sake galima gerai uzdirbti\", " + "\"constituency\": {\"id\": 5}";
+		final String candidate_06 = "{\"candidateID\": null, " 
+													+ "\"candidateName\": \"ARIMANTAS\", "
+													+ "\"candidateSurname\": \"DUMČIUS\", " 
+													+ "\"candidateDateOfBirth\": \"1991-11-29\", "
+													+ "\"candidatePersonalID\": \"39111290000\", "
+													+ "\"candidateDescription\": \"Vape nation, pusiu uz visus\", "
+													
+													+ "\"candidateParty\": null, "
+													+ "\"candidateNumberInParty\": null, "
+													
+													+ "\"candidateConstituency\": {\"id\": 2}}";
+		
+		final String candidate_07 = "{\"candidateID\": null, " 
+													+ "\"candidateName\": \"VIDA MARIJA\", "
+													+ "\"candidateSurname\": \"ČIGRIEJIENĖ\", " 
+													+ "\"candidateDateOfBirth\": \"1927-09-23\", "
+													+ "\"candidatePersonalID\": \"42709230000\", "
+													+ "\"candidateDescription\": \"Ka pazadejau ta padarysiu, a jus netikit manim?\", "
+
+													+ "\"candidateParty\": null, "
+													+ "\"candidateNumberInParty\": null, "
+													
+													+ "\"candidateConstituency\": {\"id\": 3}}";
+		
+		final String candidate_08 = "{\"candidateID\": null, " 
+													+ "\"candidateName\": \"VIAČESLAV\", "
+													+ "\"candidateSurname\": \"TITOV\", " 
+													+ "\"candidateDateOfBirth\": \"1953-03-03\", "
+													+ "\"candidatePersonalID\": \"45303030000\", " 
+													+ "\"candidateDescription\": \"Boze moj\", "
+													
+													+ "\"candidateParty\": null, "
+													+ "\"candidateNumberInParty\": null, "
+													
+													+ "\"candidateConstituency\": {\"id\": 4}}";
+		
+		final String candidate_09 = "{\"candidateID\": null, " 
+													+ "\"candidateName\": \"BRONISLOVAS\", "
+													+ "\"candidateSurname\": \"MATELIS\", " 
+													+ "\"candidateDateOfBirth\": \"1944-05-12\", "
+													+ "\"candidatePersonalID\": \"34405120000\", "
+													+ "\"candidateDescription\": \"Sake galima gerai uzdirbti\", " 
+													
+													+ "\"candidateParty\": null, "
+													+ "\"candidateNumberInParty\": null, "
+													
+													+ "\"candidateConstituency\": {\"id\": 5}}";
 
 		// PartyPeople
-		createOrUpdateCandidateFPartyTest(stringToJson(candidate_01));
-		createOrUpdateCandidateFPartyTest(stringToJson(candidate_02));
-		createOrUpdateCandidateFPartyTest(stringToJson(candidate_03));
+		createOrUpdateCandidateTest(stringToJson(candidate_01));
+		createOrUpdateCandidateTest(stringToJson(candidate_02));
+		createOrUpdateCandidateTest(stringToJson(candidate_03));
+		
 		// PartyPeopleWithConstituency
-		createOrUpdateCandidateFPartyTest(stringToJson(candidate_04));
+		createOrUpdateCandidateTest(stringToJson(candidate_04));
 		// same person different inputs
-//		createOrUpdateCandidateFConstituencyTest(stringToJson(candidate_05));
+		createOrUpdateCandidateTest(stringToJson(candidate_05));
 		// same person different inputs
 //
 //		// ConstituencyHeroes
-//		createOrUpdateCandidateFConstituencyTest(stringToJson(candidate_06));
-//		createOrUpdateCandidateFConstituencyTest(stringToJson(candidate_07));
-//		createOrUpdateCandidateFConstituencyTest(stringToJson(candidate_08));
-//		createOrUpdateCandidateFConstituencyTest(stringToJson(candidate_09));
+		createOrUpdateCandidateTest(stringToJson(candidate_06));
+		createOrUpdateCandidateTest(stringToJson(candidate_07));
+		createOrUpdateCandidateTest(stringToJson(candidate_08));
+		createOrUpdateCandidateTest(stringToJson(candidate_09));
 
 	}
 

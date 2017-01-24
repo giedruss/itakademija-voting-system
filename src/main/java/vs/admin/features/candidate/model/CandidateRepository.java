@@ -17,40 +17,24 @@ public class CandidateRepository {
 	private EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	public List<Candidate> findAllCandidates() {
+	public List<Candidate> findAllUndeletedCandidates() {
 		return em.createQuery(FIND_ALL).getResultList();
 	}
 
 	/* ===================================================== */
 	@Transactional
-	public Candidate saveOrUpdateCandidateFParty(Candidate candidate) {
+	public Candidate createOrUpdateCandidate(Candidate candidate) {
 		if (candidate.getCandidateID() == null) {
-			Candidate candidateParty = new Candidate(candidate.getCandidateID(), candidate.getCandidateName(),
-					candidate.getCandidateSurname(), candidate.getCandidateDateOfBirth(),
-					candidate.getCandidatePersonalID(), candidate.getCandidateDescription(), candidate.getParty(),
-					candidate.getCandidateNumberInParty(), candidate.getCandidateDeletedDate());
-			em.persist(candidateParty);
-			return candidateParty;
+			em.persist(candidate);
+			return candidate;
 		} else {
+			
+			//verify by id
+			
 			Candidate merged = em.merge(candidate);
 			em.persist(merged);
 			return merged;
-		}
-	}
-
-	@Transactional
-	public Candidate saveOrUpdateCandidateFConstituency(Candidate candidate) {
-		if (candidate.getCandidateID() == null) {
-			Candidate candidateConstituency = new Candidate(candidate.getCandidateID(), candidate.getCandidateName(),
-					candidate.getCandidateSurname(), candidate.getCandidateDateOfBirth(),
-					candidate.getCandidatePersonalID(), candidate.getCandidateDescription(),
-					candidate.getConstituency(), candidate.getCandidateDeletedDate());
-			em.persist(candidateConstituency);
-			return candidateConstituency;
-		} else {
-			Candidate merged = em.merge(candidate);
-			em.persist(merged);
-			return merged;
+	
 		}
 	}
 
