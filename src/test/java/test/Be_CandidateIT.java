@@ -61,13 +61,10 @@ public class Be_CandidateIT {
 		return response.getBody();
 	}
 
-
 	@Ignore
 	@Test
 	public void findAllUndeletedCandidates() {
-
 		List<Candidate> candidates = findAllCandidatesTest();
-
 		Assert.assertThat(candidates.size(), is(8));
 	}
 

@@ -45,7 +45,7 @@ public class RepresentativeController {
 
 	@RequestMapping(value = "/api/representative/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(org.springframework.http.HttpStatus.NO_CONTENT)
-	@ApiOperation(value = "Delete representative by id (adds deletion date)")
+	@ApiOperation(value = "Delete representative by id(realDelete)")
 	public void deleteRepresentativeById(@PathVariable("id") Integer id) {
 		representativeRepository.deleteRepresentative(id);
 	}

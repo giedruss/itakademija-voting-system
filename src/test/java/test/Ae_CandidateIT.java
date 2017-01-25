@@ -93,7 +93,7 @@ public class Ae_CandidateIT {
 													+ "\"candidateNumberInParty\": 1}";
 		
 		// ConstituencyInput
-		final String candidate_05 = "{\"candidateID\": 4, " 
+		final String candidate_05 = "{\"candidateID\": null, " 
 												+ "\"candidateName\": \"ARTŪRAS\", "
 												+ "\"candidateSurname\": \"MELIANAS\", " 
 												+ "\"candidateDateOfBirth\": \"1965-04-05\", "

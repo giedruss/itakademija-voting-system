@@ -2,16 +2,14 @@ package vs.admin.features.candidate.model;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class CandidateRepository {
-	private static final String FIND_ALL = "SELECT x FROM Candidate x where candidate_Deleted_Date is NULL";
+	private static final String FIND_ALL = "SELECT x FROM Candidate x WHERE candidate_Deleted_Date is NULL";
 
 	@Autowired
 	private EntityManager em;
@@ -22,19 +20,65 @@ public class CandidateRepository {
 	}
 
 	/* ===================================================== */
+
 	@Transactional
 	public Candidate createOrUpdateCandidate(Candidate candidate) {
 		if (candidate.getCandidateID() == null) {
-			em.persist(candidate);
-			return candidate;
+			
+			boolean canPersIdNoMatch = true;
+			@SuppressWarnings("unchecked")
+			List<Candidate> candidates = em.createQuery(FIND_ALL).getResultList();
+			
+			for(Candidate x : candidates) {
+				 if(x.equals(candidate)) {
+				 canPersIdNoMatch = false;		
+				 }
+			}
+			
+			if(canPersIdNoMatch == false) {
+				Candidate TEMP = new Candidate(
+						candidate.getCandidateID(), 
+						"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", 
+						candidate.getCandidateSurname(), 
+						candidate.getCandidateDateOfBirth(), 
+						candidate.getCandidatePersonalID(), 
+						candidate.getCandidateDescription(), 
+						candidate.getCandidateParty(), 
+						candidate.getCandidateNumberInParty(), 
+						candidate.getCandidateConstituency(), 
+						candidate.getCandidateDeletedDate());
+						
+						
+				
+				em.persist(em.merge(TEMP));
+				
+				return TEMP;
+				
+			} else {
+
+				
+				
+				em.persist(candidate);
+				return candidate;
+
+			}
+			
+			
+			
+		
+		
+			
+			
+			
+			
+		
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~update
 		} else {
-			
-			//verify by id
-			
+
 			Candidate merged = em.merge(candidate);
 			em.persist(merged);
 			return merged;
-	
+
 		}
 	}
 
@@ -55,10 +99,5 @@ public class CandidateRepository {
 		candidate.setCandidateDeletedDate(date);
 		em.persist(candidate);
 	}
-
 }
 
-// validation
-// junit
-// integration
-// documentation

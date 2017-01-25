@@ -155,4 +155,32 @@ public class Candidate {
 		this.candidateDeletedDate = candidateDeletedDate;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((candidatePersonalID == null) ? 0 : candidatePersonalID.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Candidate other = (Candidate) obj;
+		if (candidatePersonalID == null) {
+			if (other.candidatePersonalID != null)
+				return false;
+		} else if (!candidatePersonalID.equals(other.candidatePersonalID))
+			return false;
+		return true;
+	}
+
+	
+	
+	
 }

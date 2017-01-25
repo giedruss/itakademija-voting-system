@@ -26,16 +26,13 @@ public class CandidateController {
 	public List<Candidate>findAllCandidates() {
 			return candidateRepository.findAllUndeletedCandidates();
 	}
-	/*============================================================================*/
+
 	@RequestMapping(value = "/api/candidate", method = RequestMethod.POST)
 	@ResponseStatus(org.springframework.http.HttpStatus.CREATED)
 	@ApiOperation(value = "Create or update candidate")
 	public Candidate createOrUpdateCandidate(@RequestBody Candidate candidate) {
 		return candidateRepository.createOrUpdateCandidate(candidate);
 	}
-	
-
-	/*============================================================================*/
 	
 	@RequestMapping(value = "/api/candidate/{id}", method = RequestMethod.GET)
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
