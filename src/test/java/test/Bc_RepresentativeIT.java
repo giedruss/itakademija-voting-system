@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 import java.util.List;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -25,8 +26,8 @@ import vs.admin.features.admin.representative.Representative;
 import vs.admin.features.admin.representative.RepresentativeRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = { Bc_RepresentativeIT.Config.class,
-		Application.class })
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = {
+		Bc_RepresentativeIT.Config.class, Application.class })
 public class Bc_RepresentativeIT {
 
 	private static final String URI = "/api/representative";
@@ -34,69 +35,62 @@ public class Bc_RepresentativeIT {
 	@Autowired
 	private TestRestTemplate restTemplate;
 
-	private List<Representative> findAllRepresentativesTest() { // keisti
-		// Setup
+	private List<Representative> findAllRepresentativesTest() {
 		ParameterizedTypeReference<List<Representative>> representatives = new ParameterizedTypeReference<List<Representative>>() { // keisti
 		};
-		// Execute
 		ResponseEntity<List<Representative>> response = restTemplate.exchange(URI, HttpMethod.GET, null,
-				representatives); // keisti
-
-		// Verify
-		Assert.assertThat(response.getStatusCode(), is(HttpStatus.OK)); // keisti
+				representatives);
+		Assert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
 
 		return response.getBody();
 	}
 
-	private Representative deleteRepresentativeByIdTest(final int id) { // keisti
-		// Setup
-		ParameterizedTypeReference<Representative> representative = new ParameterizedTypeReference<Representative>() { // keisti
+	private Representative deleteRepresentativeByIdTest(final int id) {
+		ParameterizedTypeReference<Representative> representative = new ParameterizedTypeReference<Representative>() {
 		};
-		// Exercise
-		ResponseEntity<Representative> response = restTemplate.exchange(URI + "/" + id, HttpMethod.DELETE, null, // keisti
+		ResponseEntity<Representative> response = restTemplate.exchange(URI + "/" + id, HttpMethod.DELETE, null,
 				representative);
-		// Verify
-		Assert.assertThat(response.getStatusCode(), is(HttpStatus.NO_CONTENT)); // keisti
+		Assert.assertThat(response.getStatusCode(), is(HttpStatus.NO_CONTENT));
 
-		return response.getBody(); // keisti
+		return response.getBody();
 	}
 
-	private Representative findRepresentativeByIdTest(final int id) { // keisti
-		// Setup
-		ParameterizedTypeReference<Representative> representative = new ParameterizedTypeReference<Representative>() { // keisti
+	private Representative findRepresentativeByIdTest(final int id) {
+		ParameterizedTypeReference<Representative> representative = new ParameterizedTypeReference<Representative>() {
 		};
-		// Exercise
-		ResponseEntity<Representative> response = restTemplate.exchange(URI + "/" + id, HttpMethod.GET, null, // keisti
+		ResponseEntity<Representative> response = restTemplate.exchange(URI + "/" + id, HttpMethod.GET, null,
 				representative);
-		// Verify
-		Assert.assertThat(response.getStatusCode(), is(HttpStatus.OK)); // keisti
+		Assert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
 
-		return response.getBody(); // keisti
+		return response.getBody();
 	}
 
-	@Ignore
 	@Test
+	public void testPriority() {
+		findAllUndeletedRepresentatives();
+		findRepresentative();
+		deleteRepresentative();
+	}
+	
+//	@Test
 	public void findAllUndeletedRepresentatives() {
-
 		List<Representative> representatives = findAllRepresentativesTest();
-
-		Assert.assertThat(representatives.size(), is(2));
+		Assert.assertThat(representatives.size(), is(12));
 	}
 
-	@Ignore
-	@Test
-	public void deleteRepresentative() {
-
-		Representative deleted = deleteRepresentativeByIdTest(1);
-	}
-
-	@Test
+//	@Test
 	public void findRepresentative() {
-
 		Representative foundById = findRepresentativeByIdTest(1);
-
 		Assert.assertThat(foundById.getName(), is("Zenonas"));
+	}
 
+
+//	@Test
+	public void deleteRepresentative() {
+		Representative deleted = deleteRepresentativeByIdTest(1); 
+		// delete method gives back no body
+		Representative foundById = findRepresentativeByIdTest(1);
+		Assert.assertThat((foundById == null), is(true));
 	}
 
 	@TestConfiguration

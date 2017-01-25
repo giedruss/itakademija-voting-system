@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiOperation; //swagger
 
 @RestController
 @Api // swagger
-@CrossOrigin
+@CrossOrigin //what is this???
 public class RepresentativeController {
 
 	@Autowired
