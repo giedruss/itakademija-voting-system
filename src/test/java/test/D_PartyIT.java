@@ -2,10 +2,12 @@ package test;
 
 import static org.hamcrest.CoreMatchers.is;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -68,7 +70,7 @@ public class D_PartyIT {
 				party);
 		// Verify
 		Assert.assertThat(response.getStatusCode(), is(HttpStatus.OK)); // keisti
-
+		
 		return response.getBody(); // keisti
 	}
 
@@ -91,6 +93,7 @@ public class D_PartyIT {
 	// }
 
 	// keisti
+	@Before
 	@Test
 	public void createParties() {
 
@@ -129,13 +132,13 @@ public class D_PartyIT {
 	}
 
 	// keisti
-	@Ignore
+	//@Ignore
 	@Test
 	public void findAllUndeletedParties() {
 
 		List<Party> parties = findAllPartiesTest();
-
-		Assert.assertThat(parties.size(), is(2));
+		int a = 10;
+		Assert.assertThat(a, is(parties.size()));
 	}
 
 	// keisti
@@ -143,17 +146,20 @@ public class D_PartyIT {
 	@Test
 	public void deleteParty() {
 
+		deletePartyByIdTest(1);
+		Party foundById = findPartyByIdTest(1);
+		Assert.assertThat(foundById.getId(), is(1));
 		//
 	}
 
 	// keisti
-	@Ignore
+	//@Ignore
 	@Test
 	public void findParty() {
 
 		Party foundById = findPartyByIdTest(1);
 
-		// Assert.assertThat(foundById.getId(), is(null));
+		 Assert.assertThat(foundById.getId(), is(1));
 
 	}
 
