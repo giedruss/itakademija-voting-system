@@ -12,7 +12,7 @@ Prisijungiama kai programa paleista
 
   http://localhost:8080/swagger-ui.html#/
 
- ###Integraciniai testai:
+###Integraciniai testai:
   
   1) Istrinam duombaze
   
