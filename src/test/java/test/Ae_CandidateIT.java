@@ -1,12 +1,7 @@
 package test;
 
-import static org.hamcrest.CoreMatchers.is;
-
-import java.util.List;
-
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +10,6 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -25,13 +18,12 @@ import net.minidev.json.JSONObject; //string to JSON
 import net.minidev.json.parser.JSONParser; //string to JSON
 import net.minidev.json.parser.ParseException; //string to JSON
 import vs.Application;
-import vs.admin.features.candidate.model.Candidate;
 import vs.admin.features.candidate.model.CandidateRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = { E_CandidateIT.Config.class,
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = {Ae_CandidateIT.Config.class,
 		Application.class })
-public class E_CandidateIT {
+public class Ae_CandidateIT {
 
 	private static final String URI = "/api/candidate";
 	JSONParser parser = new JSONParser(0);
@@ -39,88 +31,15 @@ public class E_CandidateIT {
 	@Autowired
 	private TestRestTemplate restTemplate;
 
-	
-	
-	
 	private void createOrUpdateCandidateTest(final JSONObject createCandidate) {
-		// Exercise
 		ResponseEntity<Void> response = restTemplate.postForEntity(URI, createCandidate, Void.class);
-		// Verify
 		Assert.assertThat(response.getStatusCode(), CoreMatchers.is(HttpStatus.CREATED));
 	}
 
-
-
-	private List<Candidate> findAllCandidatesTest() {
-		// Setup
-		ParameterizedTypeReference<List<Candidate>> candidates = new ParameterizedTypeReference<List<Candidate>>() {
-		};
-		// Execute
-		ResponseEntity<List<Candidate>> response = restTemplate.exchange(URI, HttpMethod.GET, null, candidates);
-
-		// Verify
-		Assert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
-
-		return response.getBody();
-	}
-
-	private Candidate deleteCandidateByIdTest(final int id) {
-		// Setup
-		ParameterizedTypeReference<Candidate> candidate = new ParameterizedTypeReference<Candidate>() {
-		};
-		// Exercise
-		ResponseEntity<Candidate> response = restTemplate.exchange(URI + "/" + id, HttpMethod.DELETE, null, candidate);
-		// Verify
-		Assert.assertThat(response.getStatusCode(), is(HttpStatus.NO_CONTENT));
-
-		return response.getBody();
-	}
-
-	private Candidate findCandidateByIdTest(final int id) {
-		// Setup
-		ParameterizedTypeReference<Candidate> candidate = new ParameterizedTypeReference<Candidate>() {
-		};
-		// Exercise
-		ResponseEntity<Candidate> response = restTemplate.exchange(URI + "/" + id, HttpMethod.GET, null, candidate);
-		// Verify
-		Assert.assertThat(response.getStatusCode(), is(HttpStatus.OK));
-
-		return response.getBody();
-	}
-
-	// @Before
-	// public void setUp() throws Exception {
-	// createConstituencies();
-	// }
-
-	// keisti
 	@Test
 	public void createCandidates() {
 
 		// PartyPeople
-		
-		/*
-		{
-"candidateDateOfBirth": "string",
-					"candidateID": null,
-					"candidateName": "string",
-					"candidateSurname": "string",
-					"candidatePersonalID": "string",
-					"candidateDescription": "string",
-					"candidateNumberInParty": 23,
-"candidateDeletedDate": null,
-	 	  
-		
-"candidateConstituency": {"id": 1},
-"candidateParty": {"id": 3}
-}
-
-
-
-
-
-
-		*/
 		final String candidate_01 = "{"
 													+ "\"candidateID\": null, " 
 													+ "\"candidateName\": \"TOMAS\", "
@@ -251,35 +170,6 @@ public class E_CandidateIT {
 		createOrUpdateCandidateTest(stringToJson(candidate_07));
 		createOrUpdateCandidateTest(stringToJson(candidate_08));
 		createOrUpdateCandidateTest(stringToJson(candidate_09));
-
-	}
-
-	// keisti
-	@Ignore
-	@Test
-	public void findAllUndeletedCandidates() {
-
-		List<Candidate> candidates = findAllCandidatesTest();
-
-		Assert.assertThat(candidates.size(), is(8));
-	}
-
-	// keisti
-	@Ignore
-	@Test
-	public void deleteCandidate() {
-
-		//
-	}
-
-	// keisti
-	@Ignore
-	@Test
-	public void findCandidate() {
-
-		Candidate foundById = findCandidateByIdTest(1);
-
-		// Assert.assertThat(foundById.getId(), is(null));
 
 	}
 

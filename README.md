@@ -11,3 +11,11 @@ Prisijungiama kai programa paleista
 ###Swagger dokumentacija (vietoj Postman):
 
   http://localhost:8080/swagger-ui.html#/
+
+ ###Integraciniai testai:
+  
+  1) Istrinam duombaze
+  
+  2) cmd/bash rasome <mvn clean verify> - sukuriama ir uzpildoma DB ir patikrinami visi testai.
+  
+  3) Eclipse aplinkoje galime pasileisti pavienius testus.
