@@ -16,6 +16,6 @@ Prisijungiama kai programa paleista
   
   1) Istrinam duombaze
   
-  2) cmd/bash rasome <mvn clean verify> - sukuriama ir uzpildoma DB ir patikrinami visi testai.
+  2) cmd/bash rasome "mvn clean verify" - sukuriama ir uzpildoma DB ir patikrinami visi testai.
   
   3) Eclipse aplinkoje galime pasileisti pavienius testus.
