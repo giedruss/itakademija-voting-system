@@ -42,22 +42,40 @@ public class Af_MultiElectionIT {
 	public void createElection() {
 
 		final String election_01 = 
-				"{\"id\": null," + " \"deleted_date\": null," + " \"entered_date\": null," + 
-						" \"published_date\": null,"  +" \"party_id\": 1," + " \"district_id\": 1," + " \"votes\": \"500\"}";
+				 "{"
+							+ "\"id\": null, " 
+							+ "\"district\": {\"id\": 1}, " 
+							+ "\"party\": {\"id\": 1}, "
+							+ "\"votes\": 100"
+						+ "}";
 		final String election_02 = 
-				"{\"id\": null," + " \"deleted_date\": null," + " \"entered_date\": null," + 
-						" \"published_date\": null,"  +" \"party_id\": 2," + " \"district_id\": 1," + " \"votes\": \"400\"}";
+				 "{"
+							+ "\"id\": null, " 
+							+ "\"district\": {\"id\": 2}, " 
+							+ "\"party\": {\"id\": 2}, "
+							+ "\"votes\": 200"
+						+ "}";
 		final String election_03 = 
-				"{\"id\": null," + " \"deleted_date\": null," + " \"entered_date\": null," + 
-						" \"published_date\": null,"  +" \"party_id\": 3," + " \"district_id\": 1," + " \"votes\": \"300\"}";
+				 "{"
+							+ "\"id\": null, " 
+							+ "\"district\": {\"id\": 3}, " 
+							+ "\"party\": {\"id\": 3}, "
+							+ "\"votes\": 300"
+						+ "}";
 		final String election_04 = 
-				"{\"id\": null," + " \"deleted_date\": null," + " \"entered_date\": null," + 
-						" \"published_date\": null,"  +" \"party_id\": 1," + " \"district_id\": 2," + " \"votes\": \"200\"}";
+				 "{"
+							+ "\"id\": null, " 
+							+ "\"district\": {\"id\": 4}, " 
+							+ "\"party\": {\"id\": 4}, "
+							+ "\"votes\": 400"
+						+ "}";
 		final String election_05 = 
-				"{\"id\": null," + " \"deleted_date\": null," + " \"entered_date\": null," + 
-						" \"published_date\": null,"  +" \"party_id\": 2," + " \"district_id\": 2," + " \"votes\": \"100\"}";
-		
-		
+				 "{"
+							+ "\"id\": null, " 
+							+ "\"district\": {\"id\": 5}, " 
+							+ "\"party\": {\"id\": 1}, "
+							+ "\"votes\": 500"
+						+ "}";
 		createOrUpdateMultiElectionTest(stringToJson(election_01));
 		createOrUpdateMultiElectionTest(stringToJson(election_02));
 		createOrUpdateMultiElectionTest(stringToJson(election_03));

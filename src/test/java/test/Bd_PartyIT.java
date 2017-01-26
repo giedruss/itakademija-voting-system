@@ -45,7 +45,7 @@ public class Bd_PartyIT {
 	private Party deletePartyByIdTest(final int id) {
 		ParameterizedTypeReference<Party> party = new ParameterizedTypeReference<Party>() {
 		}; // Setup
-		ResponseEntity<Party> response = restTemplate.exchange(URI + "/" + id, HttpMethod.DELETE, null, party); // Exercise
+		ResponseEntity<Party> response = restTemplate.exchange(URI + "/" + id, HttpMethod.PUT, null, party); // Exercise
 		Assert.assertThat(response.getStatusCode(), is(HttpStatus.OK)); // Verify
 
 		return response.getBody();
@@ -59,33 +59,33 @@ public class Bd_PartyIT {
 
 		return response.getBody();
 	}
-
+	
 	@Test
-	public void findAllUndeletedParties() {
+	public void testPriority() {
+		findAllUndeletedParties(10);
+		findParty(2);
+		deleteParty(1);
+		findAllUndeletedParties(9);
+	}
+
+	//@Test
+	public void findAllUndeletedParties(int size) {
 		List<Party> parties = findAllPartiesTest();
-		int a = 10;
-		Assert.assertThat(a, is(parties.size()));
+		Assert.assertThat(size, is(parties.size()));
 	}
 
-	@Ignore
-	@Test
-	public void deleteParty() {
-
-		deletePartyByIdTest(1);
-		Party foundById = findPartyByIdTest(1);
-		Assert.assertThat(foundById.getId(), is(1));
-		//
+	//@Test
+	public void deleteParty(int idD) {
+		
+		Party deleteById = deletePartyByIdTest(idD);			//delete party, if ok, PASS
+		Assert.assertNull(deleteById); 					//verify delete date, if ok , PASS	
 	}
 
-	@Test
-	public void findParty() {
+	//@Test
+	public void findParty(int idF) {
 
-		Party foundById = findPartyByIdTest(1);
-
-		Assert.assertThat(foundById.getId(), is(1)); // jeigu ieskos ID 1 tai ir ras ID 1 :D :D :D
-
-		Assert.assertThat(foundById.getParty_abbreviation(), is("LSP"));
-
+		Party foundById = findPartyByIdTest(idF);								
+		Assert.assertThat(foundById.getParty_abbreviation(), is("LHP"));	
 	}
 
 	@TestConfiguration

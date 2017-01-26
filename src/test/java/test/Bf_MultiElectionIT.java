@@ -65,33 +65,32 @@ public class Bf_MultiElectionIT {
 		return response.getBody();
 	}
 
-	
-	@Test // jeigu reikia testavimo prioritetu tai galima naudoti toki metoda kaip cia
+	@Test
 	public void testPriority() {
 		findAllUndeletedElection(5);
-		findElectionById();
-		deleteElection();
+		findElectionById(3);
+		deleteElection(2);
 		findAllUndeletedElection(4);
 	}
-	
-//@Test
+
+	//@Test
 	public void findAllUndeletedElection(int expected) {
 
 		List<MultiElection> multiElection = findAllElectionTest();
 		// int expected = 5;
-		Assert.assertThat(multiElection.size(), is(expected));
+		Assert.assertThat(expected, is(multiElection.size()));
 	}
-	
-//@Test
-	public void findElectionById() {
-		MultiElection foundById = findMultiElectionByIdTest(3);
+
+	// @Test
+	public void findElectionById(int idF) {
+		MultiElection foundById = findMultiElectionByIdTest(idF);
 		Assert.assertThat(foundById.getVotes(), is(300));
 	}
 
-//@Test
-	public void deleteElection() {
-		MultiElection deletedById = deleteMultiElectionByIdTest(2);
-//		Assert.assertThat(deletedById.getDeleted_date(), is((not(null)))); //neveikia, null pointer
+	 //@Test
+	public void deleteElection(int idD) {
+		MultiElection deletedById = deleteMultiElectionByIdTest(idD); 	// Delete election if ok , PASS															
+		Assert.assertNull(deletedById); 								// Check is election having Delete Date if ok , PASS
 	}
 
 	@TestConfiguration
