@@ -4,9 +4,9 @@ import static org.hamcrest.CoreMatchers.is;
 
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Ignore;
+import org.junit.FixMethodOrder;//JUnit4.11+ test method ordering
+import org.junit.runners.*;//JUnit4.11+ test method ordering
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +28,7 @@ import vs.admin.features.admin.representative.RepresentativeRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = {
 		Bc_RepresentativeIT.Config.class, Application.class })
+@FixMethodOrder(MethodSorters.NAME_ASCENDING) //JUnit4.11+ test method ordering
 public class Bc_RepresentativeIT {
 
 	private static final String URI = "/api/representative";
@@ -65,28 +66,28 @@ public class Bc_RepresentativeIT {
 		return response.getBody();
 	}
 
-	@Test
-	public void testPriority() {
-		findAllUndeletedRepresentatives();
-		findRepresentative();
-		deleteRepresentative();
-	}
-	
 //	@Test
-	public void findAllUndeletedRepresentatives() {
+//	public void testPriority() {
+//		findAllUndeletedRepresentatives();
+//		findRepresentative();
+//		deleteRepresentative();
+//	}
+	
+	@Test
+	public void t01_findAllUndeletedRepresentatives() {
 		List<Representative> representatives = findAllRepresentativesTest();
 		Assert.assertThat(representatives.size(), is(12));
 	}
 
-//	@Test
-	public void findRepresentative() {
+	@Test
+	public void t02_findRepresentative() {
 		Representative foundById = findRepresentativeByIdTest(1);
 		Assert.assertThat(foundById.getName(), is("Zenonas"));
 	}
 
 
-//	@Test
-	public void deleteRepresentative() {
+	@Test
+	public void t03_deleteRepresentative() {
 		Representative deleted = deleteRepresentativeByIdTest(1); 
 		// delete method gives back no body
 		Representative foundById = findRepresentativeByIdTest(1);
