@@ -38,9 +38,18 @@ public class Ae_CandidateIT {
 
 	@Test
 	public void createCandidates() {
-
+		// NOVOTES
+		final String candidate_01 = "{\"candidateID\": null, "
+		+ "\"candidateName\": \"NOVOTES\", "
+		+ "\"candidateSurname\": \"NOVOTES\", "
+		+ "\"candidateDateOfBirth\": null, "
+		+ "\"candidatePersonalID\": null, "
+		+ "\"candidateDescription\": \"NOVOTES\", "
+		+ "\"candidateParty\": null, "
+		+ "\"candidateConstituency\": null, "
+		+ "\"candidateNumberInParty\": null}";
 		// PartyPeople
-		final String candidate_01 = "{"
+		final String candidate_02 = "{"
 													+ "\"candidateID\": null, " 
 													+ "\"candidateName\": \"TOMAS\", "
 													+ "\"candidateSurname\": \"AMBRAZAS\", " 
@@ -54,7 +63,7 @@ public class Ae_CandidateIT {
 													+ "\"candidateNumberInParty\": 1"
 													+ "}";
 		
-		final String candidate_02 = "{\"candidateID\": null, " 
+		final String candidate_03 = "{\"candidateID\": null, " 
 													+ "\"candidateName\": \"ALGIRDAS\", "
 													+ "\"candidateSurname\": \"PALECKIS\", " 
 													+ "\"candidateDateOfBirth\": \"1901-08-19\", "
@@ -66,7 +75,7 @@ public class Ae_CandidateIT {
 													
 													+ "\"candidateNumberInParty\": 2}";
 		
-		final String candidate_03 = "{\"candidateID\": null, " 
+		final String candidate_04 = "{\"candidateID\": null, " 
 													+ "\"candidateName\": \"JURIJUS\", "
 													+ "\"candidateSurname\": \"SUBOTINAS\", " 
 													+ "\"candidateDateOfBirth\": \"1989-07-16\", "
@@ -80,7 +89,7 @@ public class Ae_CandidateIT {
 
 		// PartyPeopleWithConstituency
 		// PartyInput
-		final String candidate_04 = "{\"candidateID\": null, " 
+		final String candidate_05 = "{\"candidateID\": null, " 
 													+ "\"candidateName\": \"ARTŪRAS\", "
 													+ "\"candidateSurname\": \"MELIANAS\", " 
 													+ "\"candidateDateOfBirth\": \"1965-04-05\", "
@@ -93,7 +102,7 @@ public class Ae_CandidateIT {
 													+ "\"candidateNumberInParty\": 1}";
 		
 		// ConstituencyInput
-		final String candidate_05 = "{\"candidateID\": null, " 
+		final String candidate_06 = "{\"candidateID\": null, " 
 												+ "\"candidateName\": \"ARTŪRAS\", "
 												+ "\"candidateSurname\": \"MELIANAS\", " 
 												+ "\"candidateDateOfBirth\": \"1965-04-05\", "
@@ -106,7 +115,7 @@ public class Ae_CandidateIT {
 												+ "\"candidateConstituency\": {\"id\": 1}}";
 
 		// ConstituencyHeroes
-		final String candidate_06 = "{\"candidateID\": null, " 
+		final String candidate_07 = "{\"candidateID\": null, " 
 													+ "\"candidateName\": \"ARIMANTAS\", "
 													+ "\"candidateSurname\": \"DUMČIUS\", " 
 													+ "\"candidateDateOfBirth\": \"1991-11-29\", "
@@ -118,7 +127,7 @@ public class Ae_CandidateIT {
 													
 													+ "\"candidateConstituency\": {\"id\": 2}}";
 		
-		final String candidate_07 = "{\"candidateID\": null, " 
+		final String candidate_08 = "{\"candidateID\": null, " 
 													+ "\"candidateName\": \"VIDA MARIJA\", "
 													+ "\"candidateSurname\": \"ČIGRIEJIENĖ\", " 
 													+ "\"candidateDateOfBirth\": \"1927-09-23\", "
@@ -130,7 +139,7 @@ public class Ae_CandidateIT {
 													
 													+ "\"candidateConstituency\": {\"id\": 3}}";
 		
-		final String candidate_08 = "{\"candidateID\": null, " 
+		final String candidate_09 = "{\"candidateID\": null, " 
 													+ "\"candidateName\": \"VIAČESLAV\", "
 													+ "\"candidateSurname\": \"TITOV\", " 
 													+ "\"candidateDateOfBirth\": \"1953-03-03\", "
@@ -142,7 +151,7 @@ public class Ae_CandidateIT {
 													
 													+ "\"candidateConstituency\": {\"id\": 4}}";
 		
-		final String candidate_09 = "{\"candidateID\": null, " 
+		final String candidate_10 = "{\"candidateID\": null, " 
 													+ "\"candidateName\": \"BRONISLOVAS\", "
 													+ "\"candidateSurname\": \"MATELIS\", " 
 													+ "\"candidateDateOfBirth\": \"1944-05-12\", "
@@ -154,22 +163,24 @@ public class Ae_CandidateIT {
 													
 													+ "\"candidateConstituency\": {\"id\": 5}}";
 
-		// PartyPeople
+		//NOVOTES
 		createOrUpdateCandidateTest(stringToJson(candidate_01));
+		// PartyPeople
 		createOrUpdateCandidateTest(stringToJson(candidate_02));
 		createOrUpdateCandidateTest(stringToJson(candidate_03));
+		createOrUpdateCandidateTest(stringToJson(candidate_04));
 		
 		// PartyPeopleWithConstituency
-		createOrUpdateCandidateTest(stringToJson(candidate_04));
-		// same person different inputs
 		createOrUpdateCandidateTest(stringToJson(candidate_05));
+		// same person different inputs
+		createOrUpdateCandidateTest(stringToJson(candidate_06));
 		// same person different inputs
 //
 //		// ConstituencyHeroes
-		createOrUpdateCandidateTest(stringToJson(candidate_06));
 		createOrUpdateCandidateTest(stringToJson(candidate_07));
 		createOrUpdateCandidateTest(stringToJson(candidate_08));
 		createOrUpdateCandidateTest(stringToJson(candidate_09));
+		createOrUpdateCandidateTest(stringToJson(candidate_10));
 
 	}
 

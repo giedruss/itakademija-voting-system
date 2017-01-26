@@ -46,14 +46,10 @@ public class Bc_RepresentativeIT {
 		return response.getBody();
 	}
 
-	private Representative deleteRepresentativeByIdTest(final int id) {
-		ParameterizedTypeReference<Representative> representative = new ParameterizedTypeReference<Representative>() {
-		};
-		ResponseEntity<Representative> response = restTemplate.exchange(URI + "/" + id, HttpMethod.DELETE, null,
-				representative);
+	private void deleteRepresentativeByIdTest(final int id) {
+		ResponseEntity<Void> response = restTemplate.exchange(URI + "/" + id, HttpMethod.DELETE, null,
+				Void.class);
 		Assert.assertThat(response.getStatusCode(), is(HttpStatus.NO_CONTENT));
-
-		return response.getBody();
 	}
 
 	private Representative findRepresentativeByIdTest(final int id) {
@@ -88,7 +84,7 @@ public class Bc_RepresentativeIT {
 
 	@Test
 	public void t03_deleteRepresentative() {
-		Representative deleted = deleteRepresentativeByIdTest(1); 
+		deleteRepresentativeByIdTest(1); 
 		// delete method gives back no body
 		Representative foundById = findRepresentativeByIdTest(1);
 		Assert.assertThat((foundById == null), is(true));

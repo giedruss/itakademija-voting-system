@@ -11,7 +11,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	Bc_RepresentativeIT.class, 
 	Bd_PartyIT.class, 
 	Be_CandidateIT.class,
-	Bf_MultiElectionIT.class})
+	Bf_MultiElectionIT.class,
+	Bg_SingleElectionIT.class})
 
 public class _FindAllDeleteFindIdSuite {
 

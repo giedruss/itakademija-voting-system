@@ -2,7 +2,6 @@ package test;
 
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,8 @@ import net.minidev.json.JSONObject; //string to JSON
 import net.minidev.json.parser.JSONParser; //string to JSON
 import net.minidev.json.parser.ParseException; //string to JSON
 import vs.Application;
-import vs.admin.features.candidate.model.CandidateRepository;
+import vs.representative.features.single.election.SingleElection;
+import vs.representative.features.single.election.SingleElectionRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = {
@@ -33,45 +33,33 @@ public class Ag_SingleElectionIT {
 	private TestRestTemplate restTemplate;
 
 	private void createSingleElectionResultTest(final JSONObject createSingleElectionResult) {
-		ResponseEntity<Void> response = restTemplate.postForEntity(URI, createSingleElectionResult, Void.class);
+		ResponseEntity<SingleElection> response = restTemplate.postForEntity(URI, createSingleElectionResult, SingleElection.class);
 		Assert.assertThat(response.getStatusCode(), CoreMatchers.is(HttpStatus.CREATED));
 	}
 
-	@Ignore
 	@Test
 	public void createSingleElectionResults() {
 
 		final String singleElectionResult_01 = "{\"singleId\": null, " + "\"singleCandidate\": {\"candidateID\": 1}, "
-				+ "\"singleDistrict\": { \"id\": 1}, " + "\"singleVotes\": 100}";
-		final String singleElectionResult_02 = "{\"singleId\": null, " + "\"singleCandidate\": {\"candidateID\": 2}, "
-				+ "\"singleDistrict\": { \"id\": 1}, " + "\"singleVotes\": 200}";
-		final String singleElectionResult_03 = "{\"singleId\": null, " + "\"singleCandidate\": {\"candidateID\": 3}, "
-				+ "\"singleDistrict\": { \"id\": 1}, " + "\"singleVotes\": 300}";
-		final String singleElectionResult_04 = "{\"singleId\": null, " + "\"singleCandidate\": {\"candidateID\": 4}, "
-				+ "\"singleDistrict\": { \"id\": 1}, " + "\"singleVotes\": 400}";
-		final String singleElectionResult_05 = "{\"singleId\": null, " + "\"singleCandidate\": {\"candidateID\": 5}, "
-				+ "\"singleDistrict\": { \"id\": 1}, " + "\"singleVotes\": 500}";
+				+ "\"singleDistrict\": { \"id\": 1}, " + "\"singleVotes\": 1000}";
+		final String singleElectionResult_04 = "{\"singleId\": null, " + "\"singleCandidate\": {\"candidateID\": 1}, "
+				+ "\"singleDistrict\": { \"id\": 2}, " + "\"singleVotes\": 100}";
+		final String singleElectionResult_05 = "{\"singleId\": null, " + "\"singleCandidate\": {\"candidateID\": 2}, "
+				+ "\"singleDistrict\": { \"id\": 2}, " + "\"singleVotes\": 100}";
 		final String singleElectionResult_06 = "{\"singleId\": null, " + "\"singleCandidate\": {\"candidateID\": 6}, "
-				+ "\"singleDistrict\": { \"id\": 1}, " + "\"singleVotes\": 600}";
+				+ "\"singleDistrict\": { \"id\": 7}, " + "\"singleVotes\": 600}";
 		final String singleElectionResult_07 = "{\"singleId\": null, " + "\"singleCandidate\": {\"candidateID\": 7}, "
-				+ "\"singleDistrict\": { \"id\": 1}, " + "\"singleVotes\": 700}";
+				+ "\"singleDistrict\": { \"id\": 7}, " + "\"singleVotes\": 700}";
 		final String singleElectionResult_08 = "{\"singleId\": null, " + "\"singleCandidate\": {\"candidateID\": 8}, "
-				+ "\"singleDistrict\": { \"id\": 1}, " + "\"singleVotes\": 800}";
+				+ "\"singleDistrict\": { \"id\": 7}, " + "\"singleVotes\": 800}";
 
-		
-		
-		
-		
-		
+	
 		createSingleElectionResultTest(stringToJson(singleElectionResult_01));
-		createSingleElectionResultTest(stringToJson(singleElectionResult_02));
-		createSingleElectionResultTest(stringToJson(singleElectionResult_03));
 		createSingleElectionResultTest(stringToJson(singleElectionResult_04));
 		createSingleElectionResultTest(stringToJson(singleElectionResult_05));
 		createSingleElectionResultTest(stringToJson(singleElectionResult_06));
 		createSingleElectionResultTest(stringToJson(singleElectionResult_07));
 		createSingleElectionResultTest(stringToJson(singleElectionResult_08));
-
 	}
 
 	private JSONObject stringToJson(final String jstring) {
@@ -89,8 +77,8 @@ public class Ag_SingleElectionIT {
 	static class Config {
 		@Bean
 		@Primary
-		public CandidateRepository constRepo() {
-			return new CandidateRepository();
+		public SingleElectionRepository constRepo() {
+			return new SingleElectionRepository();
 		}
 	}
 }
