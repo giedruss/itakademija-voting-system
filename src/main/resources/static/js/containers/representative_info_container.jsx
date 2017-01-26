@@ -24,25 +24,17 @@ var RepresentativeInfoContainer = React.createClass({
         var repId = this.props.params.repId;
          
           axios.delete('/api/representative/'+ repId).then(function(response) { 
-              console.log('item deleted'); 
-              
+              console.log('item deleted');            
               var district = self.state.representative.districtId;
-              
-/*              var constituency = axios.get('/api/district/' + district)
-              .then(function (response) {
-                      response.data.constituencyId
-              });*/
-              
               console.log(district);
-              self.context.router.push( '/con' );
-/*              self.context.router.push( '/con/' +  constituency);*/
-          }); 
-        
-        
+              self.context.router.push( '/dis/' +  self.props.params.conId);
+          });       
     },
     
     handleCancel: function() {
-
+        var self = this; 
+              self.context.router.push( '/dis/' +  self.props.params.conId);
+ 
         
     },
     
