@@ -21,7 +21,7 @@ import vs.admin.features.admin.district.District;
 @Entity
 @Table(name = "constituency")
 public class Constituency {
-
+// jhfjff
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
